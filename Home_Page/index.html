@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MieliAI — Mindful AI Solutions</title>
+  <meta name="description" content="MieliAI: Data Scientists and ML Engineers delivering practical, ethical AI and data solutions for businesses, cities, and communities." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0f2b46;            /* hero gradient start */
+      --bg2:#0b1f34;            /* hero gradient end */
+      --ink:#0d1b2a;            /* headings on light */
+      --text:#243447;           /* body on light */
+      --muted:#5a6b7b;
+      --light:#f6f8fb;          /* light section background */
+      --card:#ffffff;
+      --brand:#0bb4b8;          /* teal CTA (matches mockup vibe) */
+      --brand-ink:#073a3b;
+      --line:#e7edf3;
+      --shadow: 0 10px 30px rgba(15,43,70,.10);
+      --radius: 14px;
+      --maxw: 1120px;
+    }
+    /* Global reset & typography */
+    *,*::before,*::after{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;
+      color:var(--text); background:#fff; line-height:1.55;
+    }
+    h1,h2,h3{ color:var(--ink); line-height:1.2; margin:0 0 .6rem; }
+    h1{ font-size:clamp(2rem, 3vw + 1rem, 3rem); color:#fff; }
+    h2{ font-size:clamp(1.5rem, 1.4vw + 1rem, 2rem); }
+    p{ margin:.25rem 0 .75rem; }
+    a{ color:inherit; text-decoration:none; }
+    .container{ width:min(100%, var(--maxw)); margin-inline:auto; padding-inline: clamp(1rem, 4vw, 2rem); }
+    /* Header */
+    .site-top{ background:linear-gradient(145deg,var(--bg),var(--bg2)); color:#dce8f5; position:relative; overflow:hidden; }
+    .nav{ display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1rem 0 0; }
+    .brand{ display:flex; align-items:center; gap:.6rem; color:#e7f7f8; font-weight:700; letter-spacing:.3px; }
+    .brand__logo{
+      width:38px; height:38px; border-radius:10px; background:radial-gradient(120% 120% at 30% 20%, #16e6ea, #0b9ea2 60%, #067174);
+      display:grid; place-items:center; color:#002b2c; font-weight:800;
+      box-shadow:0 6px 16px rgba(11,158,162,.35);
+    }
+    .hero{
+      display:grid; grid-template-columns: 1.1fr .9fr; gap:clamp(1rem, 4vw, 3rem); align-items:center;
+      padding: clamp(2rem, 4vw, 3rem) 0 clamp(3rem, 6vw, 5rem);
+    }
+    .hero h1{ margin-top:.5rem; }
+    .hero p{ color:#c8d6e6; font-size:clamp(1rem, .5vw + .9rem, 1.125rem); max-width:52ch; }
+    .cta{ display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1rem; }
+    .btn{
+      padding:.9rem 1.15rem; border-radius:12px; font-weight:600; border:1px solid transparent;
+      display:inline-flex; align-items:center; justify-content:center; gap:.5rem; transition:.2s ease;
+    }
+    .btn--primary{ background:var(--brand); color:#061a1a; }
+    .btn--primary:hover{ filter:brightness(0.95); transform:translateY(-1px); }
+    .btn--ghost{ background:transparent; color:#e7f7f8; border-color:#2f4b66; }
+    .btn--ghost:hover{ background:#1234563d; transform:translateY(-1px); }
+
+    .hero-visual{
+      position:relative; min-height:260px; aspect-ratio: 1 / 1; max-width:520px; margin-inline:auto;
+      background:radial-gradient(60% 60% at 70% 30%, #103a60, transparent 70%);
+      border-radius:24px; outline:1px solid #18486e; box-shadow:0 20px 60px rgba(0,0,0,.25) inset;
+    }
+    /* simple SVG line “brain” */
+    .brain{
+      position:absolute; inset:8% 8% auto auto; width:84%; opacity:.95;
+      filter:drop-shadow(0 0 12px rgba(22,230,234,.25));
+    }
+
+    /* Sections */
+    section{ padding: clamp(2.25rem, 5vw, 4rem) 0; }
+    .section--alt{ background:var(--light); }
+    .grid{
+      display:grid; gap: clamp(0.9rem, 2vw, 1.25rem);
+      grid-template-columns: repeat(4,1fr);
+    }
+    @media (max-width: 1000px){ .hero{ grid-template-columns:1fr; text-align:left; } .hero-visual{ order:-1; } .grid{ grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 580px){ .grid{ grid-template-columns:1fr; } .cta{ justify-content:flex-start; } }
+
+    .card{
+      background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:1.25rem;
+      box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .card:hover{ transform:translateY(-3px); box-shadow:0 16px 40px rgba(15,43,70,.12); }
+    .kicker{ text-transform:uppercase; letter-spacing:.12em; color:var(--muted); font-weight:700; font-size:.85rem; margin-bottom:.25rem; }
+
+    .card h3{ font-size:1.05rem; margin-bottom:.25rem; }
+    .card p{ color:#41576a; margin:0; }
+
+    .why .card{ display:grid; grid-template-columns:auto 1fr; gap:.9rem; align-items:flex-start; }
+    .why .icon, .steps .icon{ width:36px; height:36px; border-radius:9px; display:grid; place-items:center; background:#e8fbfb; color:#05686a; font-weight:800; }
+
+    .steps .card{ text-align:left; }
+    .steps .stepnum{ font-weight:800; color:#05686a; font-size:1.05rem; }
+    .footer-cta{
+      padding: clamp(2.5rem, 6vw, 4.5rem) 0;
+      background:linear-gradient(145deg,#f7fbfd,#eef6fb);
+      text-align:center;
+      border-top:1px solid var(--line);
+    }
+    .footer-cta h2{ margin-bottom:.4rem; }
+    .muted{ color:var(--muted); }
+    /* Small utility icons (SVG) */
+    .svg{ width:22px; height:22px; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="site-top">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <div class="brand" aria-label="MieliAI">
+          <div class="brand__logo" aria-hidden="true">M</div>
+          <div>
+            <div style="font-size:1.05rem;">MieliAI</div>
+            <div class="muted" style="font-size:.85rem; font-weight:600;">Mindful AI Solutions</div>
+          </div>
+        </div>
+        <div class="muted" style="font-weight:600;">Data • ML • AI</div>
+      </nav>
+
+      <div class="hero">
+        <div>
+          <h1>Turning Data Into Intelligence, Driving AI Into Action.</h1>
+          <p>Our Data Scientists and ML Engineers help businesses, cities, and communities harness data, build intelligent models, and create real-world impact.</p>
+          <div class="cta">
+            <a class="btn btn--primary" href="#contact">Start a Pilot</a>
+            <a class="btn btn--ghost" href="#experts">Meet Our Experts</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <!-- decorative brain lines -->
+          <svg class="brain" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M140 280c0-70 60-120 130-120 95 0 120-50 185-10 43 26 60 70 55 115-4 35-22 63-51 80-12 7-14 24-4 34 18 18 22 48 9 70-18 31-62 37-90 13-9-8-23-7-31 2-23 26-63 37-100 27-38-11-67-41-77-80-2-9-11-15-20-13-36 8-70-20-70-57 0-29 20-54 48-60 10-2 17-11 17-21Z"
+                  stroke="#16e6ea" stroke-width="3" opacity=".8"/>
+            <circle cx="200" cy="240" r="8" fill="#16e6ea"/><circle cx="330" cy="195" r="7" fill="#16e6ea"/>
+            <circle cx="415" cy="245" r="6" fill="#16e6ea"/><circle cx="455" cy="315" r="7" fill="#16e6ea"/>
+            <circle cx="360" cy="365" r="6" fill="#16e6ea"/><circle cx="275" cy="395" r="7" fill="#16e6ea"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHAT WE DO -->
+  <section id="services">
+    <div class="container">
+      <h2>What We Do</h2>
+      <div class="grid" style="margin-top:1rem;">
+        <article class="card">
+          <div class="kicker">Data Strategy &amp; Consulting</div>
+          <h3>Align business goals with AI</h3>
+          <p>Roadmaps, use-case discovery, ROI models, and governance to make AI practical and valuable.</p>
+        </article>
+        <article class="card">
+          <div class="kicker">Machine Learning &amp; AI Models</div>
+          <h3>Predictive analytics, NLP, computer vision</h3>
+          <p>Time-series, classification, recommendations, and domain models built responsibly.</p>
+        </article>
+        <article class="card">
+          <div class="kicker">Smart City &amp; Public Sector AI</div>
+          <h3>Traffic, healthcare &amp; energy insights</h3>
+          <p>Optimization and analytics that support better services for citizens and communities.</p>
+        </article>
+        <article class="card">
+          <div class="kicker">Corporate Training</div>
+          <h3>Upskill teams in Data, AI &amp; Cloud</h3>
+          <p>Workshops and bootcamps in Python, SQL, ML, MLOps, and data literacy.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY WORK WITH US -->
+  <section class="section--alt">
+    <div class="container">
+      <h2>Why Work With Us</h2>
+      <div class="grid why" style="margin-top:1rem;">
+        <article class="card">
+          <div class="icon" aria-hidden="true">🧠</div>
+          <div>
+            <h3>Human Expertise</h3>
+            <p>Every solution is built by professional Data Scientists &amp; ML Engineers.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">✅</div>
+          <div>
+            <h3>Practical AI</h3>
+            <p>We focus on measurable ROI and real outcomes—not hype.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🤝</div>
+          <div>
+            <h3>Partnership Model</h3>
+            <p>We co-create with clients and transfer knowledge to your team.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">⚖️</div>
+          <div>
+            <h3>Ethical &amp; GDPR-Aligned</h3>
+            <p>Compliance-first approach to data privacy, transparency, and governance.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="steps">
+    <div class="container">
+      <h2>How It Works</h2>
+      <div class="grid" style="margin-top:1rem;">
+        <article class="card">
+          <div class="icon" aria-hidden="true">💬</div>
+          <div>
+            <div class="stepnum">1. Consultation</div>
+            <p>Understand your data challenge and success metrics.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🛠️</div>
+          <div>
+            <div class="stepnum">2. Solution Design</div>
+            <p>Select the right tools &amp; methods with a clear plan and timeline.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🧪</div>
+          <div>
+            <div class="stepnum">3. Model Development</div>
+            <p>Build &amp; validate with real data, iterate with you in the loop.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🚀</div>
+          <div>
+            <div class="stepnum">4. Deployment &amp; Training</div>
+            <p>Deliver insights, document clearly, and upskill your team.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CTA -->
+  <footer class="footer-cta" id="contact">
+    <div class="container">
+      <h2>Let’s Build Finland’s AI Future Together.</h2>
+      <p class="muted">Contact: <a href="mailto:info@mieliai.fi">info@mieliai.fi</a> · +358 xx xxx xxxx</p>
+      <div class="cta" style="justify-content:center;">
+        <a class="btn btn--primary" href="mailto:info@mieliai.fi?subject=Start%20a%20Pilot%20with%20MieliAI">Request Consultation</a>
+        <a class="btn btn--ghost" href="#services">Explore Services</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
