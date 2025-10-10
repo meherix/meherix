@@ -30,8 +30,11 @@ Our mission is to help businesses, cities, and institutions harness data and AI 
 - Business intelligence dashboards
 - GDPR (General Data Protection Regulation)-compliant data management
 - Domain-Specific AI Products
+  
              - Healthcare AI: early diagnosis support, hospital resource planning
+  
              - Smart Cities: traffic optimization, waste management forecasting
+  
              - Fintech / Risk Models: fraud detection, credit scoring
 
 ## Competitive Landscape
