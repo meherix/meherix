@@ -1,6 +1,6 @@
 # AI & Data Innovation Company (Draft)
 ## Executive Summary
-We propose to establish an AI and Data Innovation Company in Finland, focused on artificial intelligence, machine learning, and data-driven solutions.
+We propose to establish an AI and Data Innovation Company in Finland, focused on **Artificial Intelligence, Machine Learning, and Data-Driven Solutions**.
 Our mission is to help businesses, cities, and institutions harness data and AI for smarter decision-making, efficiency improvements, and sustainable growth.
 
 ### We aim to:
