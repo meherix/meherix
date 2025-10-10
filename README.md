@@ -11,7 +11,7 @@ Our mission is to help businesses, cities, and institutions harness data and AI 
 - This aligns with Finland’s vision of becoming a leader in the European data economy.
 
 ## Company Vision & Mission
-### Vision: Turning data into intelligence,Driving AI into action.
+### Vision: Turning data into intelligence, Driving AI into action.
 ### Mission: Deliver high-value, trustworthy, and ethical AI solutions that empower both local communities and international markets.
 
 ## Market Opportunity
