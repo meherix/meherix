@@ -11,23 +11,24 @@ Our mission is to help businesses, cities, and institutions harness data and AI 
 - This aligns with Finland’s vision of becoming a leader in the European data economy.
 
 ## Company Vision & Mission
-### Vision: To make Finland a hub for practical, human-centered AI that benefits society and business.
+### Vision: Turning data into intelligence,Driving AI into action.
 ### Mission: Deliver high-value, trustworthy, and ethical AI solutions that empower both local communities and international markets.
 
 ## Market Opportunity
-- Local demand: Finnish cities and companies increasingly require AI for digitalization (smart energy use, healthcare, public safety, transport optimization).
-- Global trend: AI adoption is expected to grow at >30% CAGR globally by 2030.
+- Local demand: Finnish cities and companies increasingly require AI for digitalization (smart energy use, healthcare, public safety, and transport optimization etc.).
+- Global trend: AI adoption is expected to grow at >30% CAGR (Compound Annual Growth Rate) globally by 2030.
 - Gap: Many small & mid-sized businesses in Finland lack in-house AI expertise, creating strong demand for consulting + ready-made solutions.
 
 ## Focus Areas (Our Core Services)
 - We will cover three interconnected verticals:
 - AI Consulting & Custom Solutions
-- Predictive analytics for energy & utilities
+- Predictive analytics
 - Demand forecasting for retail/logistics
 - Computer vision for manufacturing & safety
 - Data Platforms & Analytics
 - Modern data warehouses & cloud migration
 - Business intelligence dashboards
+- Time series analysis
 - GDPR (General Data Protection Regulation)-compliant data management
 - Domain-Specific AI Products
   
