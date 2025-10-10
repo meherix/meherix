@@ -40,7 +40,7 @@ Our mission is to help businesses, cities, and institutions harness data and AI 
 ## Competitive Landscape
 Existing players in Finland: Silo AI, Reaktor, Solita, Supermetrics.
 
-## Our differentiation:
+## Our differentiation
 - Focused on practical solutions for SMEs, cities, and the public sector (not just large enterprises).
 - Partnership-first approach — collaborating with municipalities, universities, and research institutions.
 - Strong emphasis on ethical, explainable AI (aligned with EU standards).
@@ -95,5 +95,5 @@ Existing players in Finland: Silo AI, Reaktor, Solita, Supermetrics.
 - **Education:** Train students and professionals in AI applications.
 - **Global competitiveness:** Position Finland as a leader in human-centered AI.
 
-## Conclusion:
+## Conclusion
 Our proposed AI & Data Innovation Company will support the city, local businesses, and the wider Finnish ecosystem, while creating sustainable growth and international opportunities. With the mayor’s support, we can launch pilots that directly benefit the community and strengthen Finland’s role in the data economy.
