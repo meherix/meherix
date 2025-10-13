@@ -162,14 +162,15 @@
       align-items: center;
     }
 
-    /* ====== NEW HOVER/ACTIVE EFFECTS ADDED HERE ====== */
-    .navlinks a:not(.btn) {
+    /* Styles for all navigation links now, including Contact */
+    .navlinks a {
         position: relative;
         padding: 4px 0;
-        transition: color 0.2s ease;
+        transition: color 0.2s ease, transform 0.1s ease-out; /* Add transform for click effect */
+        color: var(--text); /* Ensure default text color */
     }
 
-    .navlinks a:not(.btn)::after {
+    .navlinks a::after {
         content: '';
         position: absolute;
         width: 100%;
@@ -182,16 +183,17 @@
         transition: transform 0.3s ease-out;
     }
     
-    .navlinks a:not(.btn):hover {
+    .navlinks a:hover {
       color: var(--brand);
     }
 
-    .navlinks a:not(.btn):hover::after {
+    .navlinks a:hover::after {
         transform: scaleX(1);
     }
 
-    .navlinks a:not(.btn):active {
-        transform: translateY(1px);
+    .navlinks a:active {
+        transform: translateY(1px) scale(0.98); /* Apply click effect */
+        color: var(--brand); /* Keep brand color on active for text links */
     }
     
     .hero {
@@ -234,7 +236,6 @@
         filter: brightness(0.9);
     }
 
-    /* ====== BUTTON STYLE REVERTED TO SOLID COLOR ====== */
     .btn--primary {
       background: var(--brand);
       color: var(--brand-ink);
@@ -445,9 +446,7 @@
         .navlinks.active {
             display: flex;
         }
-        .navlinks .btn--primary {
-            width: fit-content; /* Ensure buttons don't stretch full width in mobile */
-        }
+        /* No specific button styles for mobile navlinks needed if all are text now */
     }
 
     .sr-only {
@@ -498,7 +497,7 @@
         <a href="#services">Services</a>
         <a href="#process">Process</a>
         <a href="#pilot">Pilot</a>
-        <a href="#contact" class="btn btn--primary" style="padding:.55rem 1rem;">Contact</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
   </nav>
