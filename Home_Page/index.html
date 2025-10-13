@@ -260,7 +260,6 @@
       transform: translateY(-2px)
     }
 
-    /* ====== NEW CREATIVE BUTTON STYLE ====== */
     .btn--creative {
       background: var(--card);
       border: 2px solid transparent;
@@ -413,13 +412,14 @@
         blink-caret .75s step-end 3 forwards;
     }
 
-    .footer-cta {
-      padding: clamp(3rem, 6vw, 5rem) 0;
+    .footer-cta, .section-cta {
+      padding: clamp(3rem, 6vw, 4rem) 0;
       background: var(--ink);
       color: #fff;
       text-align: center;
     }
-    .footer-cta h2, .footer-cta .muted {
+    .footer-cta h2, .footer-cta .muted,
+    .section-cta h2, .section-cta .muted {
       color: #fff;
     }
     .footer-cta .btn--ghost {
@@ -429,6 +429,16 @@
     .footer-cta .btn--ghost:hover {
         background: #fff;
         color: var(--ink);
+    }
+    .section-cta .btn--creative {
+      color: #fff;
+      background: transparent;
+    }
+    .section-cta .btn--creative::before {
+      background: linear-gradient(135deg, var(--brand), #90e0ef);
+    }
+    .section-cta .btn--creative:hover {
+      color: var(--ink);
     }
 
     .social-links {
@@ -747,11 +757,18 @@
                             <canvas id="churnChart"></canvas>
                         </div>
                         <p style="text-align: center; margin-top: 1rem; font-weight: 600; color: var(--ink);">Model Identifies High-Risk Segment</p>
-                        <div style="text-align: center; margin-top: 1.5rem;">
-                            <a href="#" class="btn btn--creative">Find More Example Pilot</a>
-                        </div>
                     </article>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="more-examples" class="section-cta">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: clamp(1.6rem, 2vw + 1rem, 2.2rem);">Explore Our Pilot Projects</h2>
+            <p class="muted">See more real-world examples of how we turn data into measurable business outcomes.</p>
+            <div class="cta">
+                <a href="#" class="btn btn--creative">Find More Example Pilot</a>
             </div>
         </div>
     </section>
