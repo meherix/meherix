@@ -412,14 +412,20 @@
         blink-caret .75s step-end 3 forwards;
     }
 
-    .footer-cta, .section-cta {
+    /* ====== SECTION STYLES UPDATED HERE ====== */
+    .section-cta {
+      padding: clamp(3rem, 6vw, 4rem) 0;
+      background: var(--light); /* Ash color */
+      text-align: center;
+    }
+    
+    .footer-cta {
       padding: clamp(3rem, 6vw, 4rem) 0;
       background: var(--ink);
       color: #fff;
       text-align: center;
     }
-    .footer-cta h2, .footer-cta .muted,
-    .section-cta h2, .section-cta .muted {
+    .footer-cta h2, .footer-cta .muted {
       color: #fff;
     }
     .footer-cta .btn--ghost {
@@ -429,16 +435,6 @@
     .footer-cta .btn--ghost:hover {
         background: #fff;
         color: var(--ink);
-    }
-    .section-cta .btn--creative {
-      color: #fff;
-      background: transparent;
-    }
-    .section-cta .btn--creative::before {
-      background: linear-gradient(135deg, var(--brand), #90e0ef);
-    }
-    .section-cta .btn--creative:hover {
-      color: var(--ink);
     }
 
     .social-links {
