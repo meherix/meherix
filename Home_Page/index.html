@@ -200,7 +200,6 @@
       transition: .2s ease
     }
 
-    /* ====== BUTTON STYLE UPDATED HERE ====== */
     .btn--primary {
       background-color: var(--brand);
       background-image: linear-gradient(135deg, #0077b6 0%, #005a8d 100%);
@@ -413,6 +412,9 @@
         .navlinks.active {
             display: flex;
         }
+        .navlinks .btn--primary {
+            width: fit-content; /* Ensure buttons don't stretch full width in mobile */
+        }
     }
 
     .sr-only {
@@ -459,10 +461,10 @@
         <span class="icon-bar"></span>
       </button>
       <div class="navlinks">
-        <a href="#services">Services</a>
-        <a href="#about">About</a>
-        <a href="#process">Process</a>
-        <a href="#pilot">Pilot</a>
+        <a href="#about" class="btn btn--primary" style="padding:.55rem 1rem;">About</a>
+        <a href="#services" class="btn btn--primary" style="padding:.55rem 1rem;">Services</a>
+        <a href="#process" class="btn btn--primary" style="padding:.55rem 1rem;">Process</a>
+        <a href="#pilot" class="btn btn--primary" style="padding:.55rem 1rem;">Pilot</a>
         <a href="#contact" class="btn btn--primary" style="padding:.55rem 1rem;">Contact</a>
       </div>
     </div>
