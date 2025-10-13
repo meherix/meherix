@@ -21,7 +21,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@900&display=swap" rel="stylesheet">
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -260,23 +260,18 @@
       transform: translateY(-2px)
     }
 
+    /* ====== CREATIVE BUTTON STYLE UPDATED ====== */
     .btn--creative {
-      background: var(--card);
-      border: 2px solid transparent;
+      background: transparent;
+      border: 2px solid var(--brand);
       background-clip: padding-box;
       position: relative;
       z-index: 1;
-      color: var(--ink);
+      color: var(--brand);
       padding: .8rem 1.5rem;
     }
     .btn--creative::before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0; bottom: 0; left: 0;
-      z-index: -2;
-      margin: -2px;
-      border-radius: inherit;
-      background: linear-gradient(135deg, var(--brand), #457b9d);
+      content: none;
     }
     .btn--creative::after {
       content: '';
@@ -291,10 +286,12 @@
     }
     .btn--creative:hover {
       color: var(--brand-ink);
+      border-color: transparent;
     }
     .btn--creative:hover::after {
       transform: scaleX(1);
     }
+
 
     .hero-visual {
         display: grid;
@@ -364,6 +361,18 @@
       margin-bottom: 1rem;
     }
     
+    .headline-decorated::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background-color: var(--brand);
+        border-radius: 2px;
+    }
+
     @keyframes typing {
       from { width: 0; }
       to { width: 100%; }
@@ -373,11 +382,10 @@
       50% { border-color: var(--brand); }
     }
     .section-headline {
-      font-family: 'Oswald', sans-serif;
+      font-family: 'Merriweather', serif;
       font-size: clamp(1.8rem, 2.5vw + 0.8rem, 2.4rem);
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 1px;
       text-align: center;
       height: 1.2em;
       margin-bottom: 2rem;
