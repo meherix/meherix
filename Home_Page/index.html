@@ -417,33 +417,19 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
-    /* Styles for animated sections */
-    .section-cta, .footer-cta {
+    
+    .footer-cta {
       padding: clamp(3rem, 6vw, 4rem) 0;
       text-align: center;
-      color: #fff; /* Default text color for dark sections */
+      color: #fff;
       background: linear-gradient(-45deg, var(--ink), var(--brand), #0d1b2a, var(--ink));
       background-size: 400% 400%;
       animation: gradient-pan 15s ease-in-out infinite;
     }
-    /* Ensure headings and paragraphs are white within animated sections */
-    .section-cta h2, .section-cta p,
-    .section-cta h3,
     .footer-cta h2, .footer-cta .muted {
       color: #fff;
     }
     
-    /* Creative button styling for dark backgrounds */
-    .section-cta .btn--creative {
-      color: #fff;
-      background: transparent;
-    }
-    .section-cta .btn--creative:hover {
-      color: var(--ink); /* Text becomes dark on hover */
-    }
-
-    /* Ghost buttons for dark backgrounds */
     .footer-cta .btn--ghost {
         color: #fff;
         border-color: rgba(255,255,255, .3);
@@ -776,9 +762,13 @@
             </div>
     </section>
 
-    <section id="more-examples"> <div class="container" style="text-align: center;">
-            <h2 style="font-size: clamp(1.6rem, 2vw + 1rem, 2.2rem);">Explore Our Pilot Projects</h2>
-            <p class="muted">See more real-world examples of how we turn data into measurable business outcomes.</p> <div class="cta">
+    <section id="more-examples"> 
+<div class="container" style="text-align: center;">
+            <h2 class="section-headline">
+              <span class="typing-effect" style="--char-count: 26;">Explore Our Pilot Projects</span>
+            </h2>
+            <p class="muted">See more real-world examples of how we turn data into measurable business outcomes.</p> 
+<div class="cta">
                 <a href="#" class="btn btn--creative">Find More Example Pilot</a>
             </div>
         </div>
