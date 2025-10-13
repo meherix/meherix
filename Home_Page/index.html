@@ -21,7 +21,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -364,24 +364,6 @@
       margin-bottom: 1rem;
     }
     
-    .headline-decorated {
-        position: relative;
-        display: inline-block;
-        padding-bottom: 15px;
-    }
-
-    .headline-decorated::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60px;
-        height: 4px;
-        background-color: var(--brand);
-        border-radius: 2px;
-    }
-
     @keyframes typing {
       from { width: 0; }
       to { width: 100%; }
@@ -391,10 +373,11 @@
       50% { border-color: var(--brand); }
     }
     .section-headline {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Oswald', sans-serif;
       font-size: clamp(1.8rem, 2.5vw + 0.8rem, 2.4rem);
       font-weight: 700;
-      letter-spacing: 0.5px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       text-align: center;
       height: 1.2em;
       margin-bottom: 2rem;
@@ -417,7 +400,7 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-    
+
     .footer-cta {
       padding: clamp(3rem, 6vw, 4rem) 0;
       text-align: center;
@@ -762,7 +745,7 @@
             </div>
     </section>
 
-    <section id="more-examples"> 
+    <section id="more-examples" class="section--alt"> 
 <div class="container" style="text-align: center;">
             <h2 class="section-headline">
               <span class="typing-effect" style="--char-count: 26;">Explore Our Pilot Projects</span>
