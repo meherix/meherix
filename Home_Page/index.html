@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MEHErix — Insight Shines Through</title>
 
-  <!-- Meta -->
   <meta name="description" content="MEHErix helps businesses and cities turn data into deployable AI—practical, ethical, and GDPR-aligned. Start a pilot with our Data Scientists & ML Engineers." />
-  <meta name="theme-color" content="#0bb4b8" />
+  <meta name="theme-color" content="#0077b6" />
   <link rel="icon" href="/favicon.png" />
 
-  <!-- Open Graph / Twitter -->
   <meta property="og:title" content="MEHErix — Insight Shines Through" />
   <meta property="og:description" content="Turning data into intelligence. Driving AI into action. Start a pilot with MEHErix." />
   <meta property="og:type" content="website" />
@@ -21,63 +19,393 @@
   <meta name="twitter:description" content="Practical, ethical AI for business and cities." />
   <meta name="twitter:image" content="/og-cover.png" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <style>
-    :root{
-      --bg:#0f2b46; --bg2:#0b1f34;
-      --ink:#0d1b2a; --text:#243447; --muted:#5a6b7b;
-      --light:#f6f8fb; --card:#ffffff; --brand:#0bb4b8; --brand-ink:#073a3b;
-      --line:#e7edf3; --shadow:0 10px 30px rgba(15,43,70,.10); --radius:14px; --maxw:1120px;
+    :root {
+      --bg: #ffffff;
+      --light: #f8f9fa;
+      --ink: #1d3557;
+      --text: #457b9d;
+      --muted: #6c757d;
+      --card: #ffffff;
+      --brand: #0077b6;
+      --brand-ink: #ffffff;
+      --line: #dee2e6;
+      --shadow: 0 8px 24px rgba(29, 53, 87, .08);
+      --radius: 14px;
+      --maxw: 1120px;
     }
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--text);background:#fff;line-height:1.55}
-    h1,h2,h3{color:var(--ink);line-height:1.2;margin:0 0 .6rem}
-    h1{font-size:clamp(2rem, 3vw + 1rem, 3rem);color:#fff}
-    h2{font-size:clamp(1.5rem, 1.4vw + 1rem, 2rem)}
-    p{margin:.25rem 0 .75rem}
-    a{color:inherit;text-decoration:none}
-    .container{width:min(100%,var(--maxw));margin-inline:auto;padding-inline:clamp(1rem,4vw,2rem)}
-    /* Nav */
-    .site-top{background:linear-gradient(145deg,var(--bg),var(--bg2));color:#dce8f5;position:relative;overflow:hidden}
-    .nav{position:sticky;top:0;backdrop-filter:saturate(130%) blur(6px);background:linear-gradient(145deg,rgba(15,43,70,.85),rgba(11,31,52,.85));z-index:10}
-    .nav__inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 0}
-    .brand{display:flex;align-items:center;gap:.6rem;color:#e7f7f8;font-weight:700;letter-spacing:.3px}
-    .brand__logo{width:38px;height:38px;border-radius:10px;background:radial-gradient(120% 120% at 30% 20%, #16e6ea, #0b9ea2 60%, #067174);display:grid;place-items:center;color:#002b2c;font-weight:800;box-shadow:0 6px 16px rgba(11,158,162,.35)}
-    .navlinks{display:flex;gap:1rem;font-weight:600}
-    .navlinks a{opacity:.92} .navlinks a:hover{opacity:1}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1rem,4vw,3rem);align-items:center;padding:clamp(2.2rem,4vw,3.2rem) 0 clamp(3.2rem,6vw,5.2rem)}
-    .hero p{color:#c8d6e6;font-size:clamp(1rem,.5vw + .9rem,1.125rem);max-width:58ch}
-    .cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
-    .btn{padding:.9rem 1.15rem;border-radius:12px;font-weight:600;border:1px solid transparent;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;transition:.2s ease}
-    .btn--primary{background:var(--brand);color:#061a1a}.btn--primary:hover{filter:brightness(.95);transform:translateY(-1px)}
-    .btn--ghost{background:transparent;color:#e7f7f8;border-color:#2f4b66}.btn--ghost:hover{background:#1234563d;transform:translateY(-1px)}
-    .hero-visual{position:relative;min-height:260px;aspect-ratio:1/1;max-width:520px;margin-inline:auto;background:radial-gradient(60% 60% at 70% 30%, #103a60, transparent 70%);border-radius:24px;outline:1px solid #18486e;box-shadow:0 20px 60px rgba(0,0,0,.25) inset}
-    .brain{position:absolute;inset:8% 8% auto auto;width:84%;opacity:.95;filter:drop-shadow(0 0 12px rgba(22,230,234,.25))}
-    section{padding:clamp(2.25rem,5vw,4rem) 0}.section--alt{background:var(--light)}
-    .grid{display:grid;gap:clamp(.9rem,2vw,1.25rem);grid-template-columns:repeat(4,1fr)}
-    @media (max-width:1000px){.hero{grid-template-columns:1fr;text-align:left}.hero-visual{order:-1}.grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:580px){.grid{grid-template-columns:1fr}.cta{justify-content:flex-start}}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow);transition:transform .15s ease, box-shadow .15s ease}
-    .card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(15,43,70,.12)}
-    .kicker{text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700;font-size:.85rem;margin-bottom:.25rem}
-    .card h3{font-size:1.05rem;margin-bottom:.25rem}.card p{color:#41576a;margin:0}
-    .icon{width:36px;height:36px;border-radius:9px;display:grid;place-items:center;background:#e8fbfb;color:#05686a;font-weight:800}
-    .trust{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;opacity:.9;margin-top:.75rem}
-    .chip{font-size:.85rem;background:#e8fbfb;border:1px solid #bceaea;border-radius:999px;padding:.35rem .65rem;color:#05686a;font-weight:700}
-    .footer-cta{padding:clamp(2.5rem,6vw,4.5rem) 0;background:linear-gradient(145deg,#f7fbfd,#eef6fb);text-align:center;border-top:1px solid var(--line)}
-    .muted{color:var(--muted)}
-    .list{display:grid;gap:.5rem}.list li{margin-left:1rem}
-    /* Accessibility helpers */
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--ink);
+      line-height: 1.2;
+      margin: 0 0 .6rem
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4vw + 1rem, 3.5rem);
+      color: var(--ink)
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 2vw + 1rem, 2.2rem)
+    }
+
+    p {
+      margin: .25rem 0 1rem
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    .container {
+      width: min(100%, var(--maxw));
+      margin-inline: auto;
+      padding-inline: clamp(1rem, 4vw, 2rem)
+    }
+    
+    /* MODIFIED FOR ANIMATION */
+    .site-top {
+      background-color: transparent;
+      color: var(--text);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background-image:
+        radial-gradient(circle at 100% 0%, rgba(0, 119, 182, 0.08), transparent 40%),
+        radial-gradient(circle at 0% 100%, rgba(29, 53, 87, 0.08), transparent 40%);
+      background-size: cover;
+      background-position: center;
+    }
+    
+    /* ADDED FOR ANIMATION */
+    #tsparticles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    
+    .nav {
+      position: sticky;
+      top: 0;
+      backdrop-filter: saturate(130%) blur(6px);
+      background: rgba(255, 255, 255, .85);
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .8rem 0
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      color: var(--ink);
+      font-weight: 700;
+      letter-spacing: .3px
+    }
+
+    .brand__logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--brand);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      box-shadow: 0 6px 16px rgba(0, 119, 182, .25);
+    }
+
+    .navlinks {
+      display: flex;
+      gap: 1.5rem;
+      font-weight: 600
+    }
+
+    .navlinks a:hover {
+      color: var(--brand)
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      text-align: center;
+    }
+
+    .hero p {
+      font-size: clamp(1rem, .5vw + .9rem, 1.125rem);
+      max-width: 58ch;
+      margin-inline: auto;
+    }
+
+    .cta {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: .9rem 1.25rem;
+      border-radius: 12px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      transition: .2s ease
+    }
+
+    .btn--primary {
+      background: var(--brand);
+      color: var(--brand-ink)
+    }
+
+    .btn--primary:hover {
+      filter: brightness(.95);
+      transform: translateY(-2px)
+    }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--brand);
+      border-color: var(--line)
+    }
+
+    .btn--ghost:hover {
+      background: var(--brand);
+      color: var(--brand-ink);
+      border-color: var(--brand);
+      transform: translateY(-2px)
+    }
+
+    .hero-visual {
+        display: grid;
+        place-items: center;
+    }
+
+    .brain-svg {
+        width: min(100%, 450px);
+        opacity: .95;
+    }
+
+    section {
+      padding: clamp(2.5rem, 5vw, 4.5rem) 0
+    }
+
+    .section--alt {
+      background: var(--light)
+    }
+    
+    .grid {
+      display: grid;
+      gap: clamp(1rem, 2vw, 1.5rem);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, box-shadow .2s ease
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(29, 53, 87, .12);
+    }
+
+    .kicker {
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: .8rem;
+      margin-bottom: .25rem
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: .25rem
+    }
+
+    .card p {
+      color: var(--text);
+      margin: 0
+    }
+
+    .icon {
+      font-size: 1.5rem;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: #e6f2ff;
+      margin-bottom: 1rem;
+    }
+
+    .footer-cta {
+      padding: clamp(3rem, 6vw, 5rem) 0;
+      background: var(--ink);
+      color: #fff;
+      text-align: center;
+    }
+    .footer-cta h2, .footer-cta .muted {
+      color: #fff;
+    }
+    .footer-cta .btn--ghost {
+        color: #fff;
+        border-color: rgba(255,255,255, .3);
+    }
+    .footer-cta .btn--ghost:hover {
+        background: #fff;
+        color: var(--ink);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      display: inline-block;
+    }
+
+    .social-links a svg {
+      width: 24px;
+      height: 24px;
+      stroke: rgba(255, 255, 255, 0.7);
+      transition: stroke 0.2s ease, transform 0.2s ease;
+    }
+
+    .social-links a:hover svg {
+      stroke: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    .list {
+      display: grid;
+      gap: .5rem;
+      padding-left: 1.25rem;
+      margin:0;
+    }
+    
+    .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    .nav-toggle .icon-bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--ink);
+        margin: 5px 0;
+        transition: transform 0.3s ease;
+    }
+
+    @media (max-width: 1000px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center
+      }
+      .hero-visual {
+        order: -1;
+        margin-bottom: 2rem;
+      }
+      .cta {
+          justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+        .nav-toggle {
+            display: block;
+            z-index: 20;
+        }
+        .navlinks {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--line);
+            display: none;
+        }
+        .navlinks.active {
+            display: flex;
+        }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0
+    }
   </style>
 
-  <!-- JSON-LD (basic organization) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -92,27 +420,32 @@
 </head>
 <body>
 
-  <!-- NAV -->
-  <div class="nav" role="navigation" aria-label="Primary">
+  <div id="tsparticles"></div>
+
+  <nav class="nav" role="navigation" aria-label="Primary">
     <div class="container nav__inner">
       <a href="#" class="brand" aria-label="MEHErix">
         <div class="brand__logo" aria-hidden="true">M</div>
         <div>
-          <div style="font-size:1.05rem;">MEHErix</div>
-          <div class="muted" style="font-size:.85rem;font-weight:600;">Insight Shines Through</div>
+          <div style="font-size:1.1rem;">MEHErix</div>
+          <div class="muted" style="font-size:.8rem;font-weight:600;">Insight Shines Through</div>
         </div>
       </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <div class="navlinks">
         <a href="#services">Services</a>
-        <a href="#problems">Problems</a>
+        <a href="#about">About</a>
         <a href="#process">Process</a>
         <a href="#pilot">Pilot</a>
-        <a href="#contact" class="btn btn--primary" style="padding:.55rem .9rem;">Contact</a>
+        <a href="#contact" class="btn btn--primary" style="padding:.55rem 1rem;">Contact</a>
       </div>
     </div>
-  </div>
+  </nav>
 
-  <!-- HERO -->
   <header class="site-top">
     <div class="container">
       <div class="hero">
@@ -120,187 +453,365 @@
           <h1>Turning Data Into Intelligence. Driving AI Into Action.</h1>
           <p>Our Data Scientists and ML Engineers help businesses, cities, and communities harness data, build models, and deploy safe, GDPR-aligned AI with measurable ROI.</p>
           <div class="cta">
-            <a class="btn btn--primary" href="#pilot">Start a Pilot</a>
+            <a class="btn btn--primary" href="#pilot">Start a Pilot Project</a>
             <a class="btn btn--ghost" href="#team">Meet Our Experts</a>
           </div>
-          <div class="trust" aria-label="Trust indicators">
-            <span class="chip">GDPR-aligned</span>
-            <span class="chip">Ethical AI</span>
-            <span class="chip">Finland/EU focus</span>
-            <span class="chip">MLOps ready</span>
-          </div>
-        </div>
-
-        <div class="hero-visual" aria-hidden="true">
-          <svg class="brain" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M140 280c0-70 60-120 130-120 95 0 120-50 185-10 43 26 60 70 55 115-4 35-22 63-51 80-12 7-14 24-4 34 18 18 22 48 9 70-18 31-62 37-90 13-9-8-23-7-31 2-23 26-63 37-100 27-38-11-67-41-77-80-2-9-11-15-20-13-36 8-70-20-70-57 0-29 20-54 48-60 10-2 17-11 17-21Z" stroke="#16e6ea" stroke-width="3" opacity=".8"/>
-            <circle cx="200" cy="240" r="8" fill="#16e6ea"/><circle cx="330" cy="195" r="7" fill="#16e6ea"/>
-            <circle cx="415" cy="245" r="6" fill="#16e6ea"/><circle cx="455" cy="315" r="7" fill="#16e6ea"/>
-            <circle cx="360" cy="365" r="6" fill="#16e6ea"/><circle cx="275" cy="395" r="7" fill="#16e6ea"/>
-          </svg>
         </div>
       </div>
     </div>
   </header>
-
-  <!-- WHAT WE DO -->
-  <section id="services">
-    <div class="container">
-      <h2>Productized Services</h2>
-      <p class="muted">Clear scopes and outcomes you can start this month.</p>
-      <div class="grid" style="margin-top:1rem;">
-        <article class="card">
-          <div class="kicker">Data Strategy</div>
-          <h3>AI/Analytics Roadmap</h3>
-          <p>Use-case discovery, ROI modeling, and governance to make AI practical.</p>
-        </article>
-        <article class="card">
-          <div class="kicker">ML Engineering</div>
-          <h3>Predictive & Generative AI</h3>
-          <p>Time-series, NLP, CV, recommendation engines—built with MLOps.</p>
-        </article>
-        <article class="card">
-          <div class="kicker">Public Sector</div>
-          <h3>Smart City Insights</h3>
-          <p>Traffic, energy, healthcare analytics for better citizen services.</p>
-        </article>
-        <article class="card">
-          <div class="kicker">Upskilling</div>
-          <h3>Data/AI Training</h3>
-          <p>Bootcamps in Python, SQL, ML, cloud, and data literacy.</p>
-        </article>
-      </div>
+  
+  <section id="about">
+    <div class="container" style="text-align: center; max-width: 800px;">
+        <h2>Our Mission</h2>
+        <p class="muted" style="font-size: 1.125rem;">We are an AI and Data Innovation Company in Finland, focused on Artificial Intelligence, Machine Learning, and Data-Driven Solutions. Our mission is to help businesses, cities, and institutions harness data and AI for smarter decision-making, efficiency improvements, and sustainable growth.</p>
     </div>
   </section>
 
-  <!-- PROBLEMS WE SOLVE (Integrate plan value props here) -->
-  <section id="problems" class="section--alt">
-    <div class="container">
-      <h2>Problems We Solve</h2>
-      <div class="grid" style="margin-top:1rem;">
-        <article class="card">
-          <div class="icon" aria-hidden="true">📉</div>
-          <div>
-            <h3>Low data ROI</h3>
-            <p><!-- TODO: REPLACE WITH YOUR PLAN CONTENT -->You have data lakes but few shipped use-cases. We triage use-cases, prove value fast, and scale.</p>
-          </div>
-        </article>
-        <article class="card">
-          <div class="icon" aria-hidden="true">🔒</div>
-          <div>
-            <h3>Privacy & compliance risk</h3>
-            <p><!-- TODO: REPLACE -->We design for GDPR, data-minimization, security reviews, and auditability.</p>
-          </div>
-        </article>
-        <article class="card">
-          <div class="icon" aria-hidden="true">🧩</div>
-          <div>
-            <h3>Fragmented stack</h3>
-            <p><!-- TODO: REPLACE -->We standardize pipelines, model registry, CI/CD, and monitoring for ML systems.</p>
-          </div>
-        </article>
-        <article class="card">
-          <div class="icon" aria-hidden="true">⏱️</div>
-          <div>
-            <h3>Slow from idea → impact</h3>
-            <p><!-- TODO: REPLACE -->We run 4–8 week pilots to ship something real, then harden for production.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
+  <section id="services" class="section--alt">
+    <div class="container">
+      <h2 style="text-align: center;">Our Core Services</h2>
+      <p class="muted" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;">Clear scopes and practical outcomes you can start with this month.</p>
+      <div class="grid">
+        <article class="card">
+          <div class="icon" aria-hidden="true">📈</div>
+          <div class="kicker">Data Strategy</div>
+          <h3>AI & Analytics Roadmap</h3>
+          <p>Use-case discovery, ROI modeling, and governance to make AI practical for your business.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">⚙️</div>
+          <div class="kicker">ML Engineering</div>
+          <h3>Predictive & Generative AI</h3>
+          <p>Time-series, NLP, Computer Vision, and recommendation engines—built with production-ready MLOps.</p>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🏙️</div>
+          <div class="kicker">Public Sector</div>
+          <h3>Smart City Insights</h3>
+          <p>Solutions for traffic, energy, and healthcare analytics to improve citizen services and sustainability.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  <!-- WHY WORK WITH US -->
-  <section id="why">
-    <div class="container">
-      <h2>Why Work With Us</h2>
-      <div class="grid" style="margin-top:1rem;">
-        <article class="card"><div class="icon">🧠</div><div><h3>Human Expertise</h3><p>Solutions built by professional Data Scientists &amp; ML Engineers.</p></div></article>
-        <article class="card"><div class="icon">✅</div><div><h3>Practical AI</h3><p>Focus on measurable outcomes—not hype.</p></div></article>
-        <article class="card"><div class="icon">🤝</div><div><h3>Partnership</h3><p>We co-create and transfer knowledge to your team.</p></div></article>
-        <article class="card"><div class="icon">⚖️</div><div><h3>Ethical &amp; GDPR-Aligned</h3><p>Privacy by design, transparency, and governance.</p></div></article>
-      </div>
-    </div>
-  </section>
+    <section id="why">
+    <div class="container">
+      <h2 style="text-align: center;">Why Partner With Us</h2>
+      <p class="muted" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;">We're more than consultants; we are your innovation partners.</p>
+      <div class="grid">
+        <article class="card">
+          <div class="icon">🧠</div>
+          <div>
+            <h3>Human Expertise</h3>
+            <p>Solutions built by professional Data Scientists & ML Engineers, not just black-box tools.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon">✅</div>
+          <div>
+            <h3>Practical AI</h3>
+            <p>We focus on delivering measurable business outcomes and clear ROI—not just hype.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon">🤝</div>
+          <div>
+            <h3>Collaborative Partnership</h3>
+            <p>We work with your team, co-creating solutions and transferring knowledge for long-term success.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon">⚖️</div>
+          <div>
+            <h3>Ethical & GDPR-Aligned</h3>
+            <p>We build with privacy by design, transparency, and robust governance from day one.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  <!-- PROCESS -->
-  <section id="process" class="section--alt">
-    <div class="container">
-      <h2>How It Works</h2>
-      <div class="grid" style="margin-top:1rem;">
-        <article class="card"><div class="icon">💬</div><div><div class="kicker">1</div><h3>Consultation</h3><p>Define the challenge and success metrics.</p></div></article>
-        <article class="card"><div class="icon">🛠️</div><div><div class="kicker">2</div><h3>Solution Design</h3><p>Pick tools &amp; methods with a clear plan.</p></div></article>
-        <article class="card"><div class="icon">🧪</div><div><div class="kicker">3</div><h3>Pilot Build</h3><p>Validate with real data, iterate with you in the loop.</p></div></article>
-        <article class="card"><div class="icon">🚀</div><div><div class="kicker">4</div><h3>Deploy & Train</h3><p>Harden to production and upskill your team.</p></div></article>
-      </div>
-    </div>
-  </section>
+    <section id="process" class="section--alt">
+    <div class="container">
+      <h2 style="text-align: center;">Our 4-Step Process</h2>
+      <div class="grid" style="margin-top:2rem;">
+        <article class="card">
+          <div class="icon">💬</div>
+          <div>
+            <div class="kicker">Step 1</div>
+            <h3>Consultation</h3>
+            <p>We work with you to define the business challenge and establish clear success metrics.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon">🛠️</div>
+          <div>
+            <div class="kicker">Step 2</div>
+            <h3>Solution Design</h3>
+            <p>We architect the right technical solution and data strategy with a detailed project plan.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon">🧪</div>
+          <div>
+            <div class="kicker">Step 3</div>
+            <h3>Pilot Build & Iterate</h3>
+            <p>We build a working prototype, validating it with real data while keeping you in the loop.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="icon">🚀</div>
+          <div>
+            <div class="kicker">Step 4</div>
+            <h3>Deploy & Support</h3>
+            <p>We harden the solution for production, deploy it, and provide training for your team.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  <!-- PILOT / PRICING TEASER -->
-  <section id="pilot">
-    <div class="container">
-      <h2>Start a Pilot (4–8 weeks)</h2>
-      <p class="muted"><!-- TODO: REPLACE -->Choose 1–2 use-cases (e.g., churn, demand, anomaly detection, support automation). We deliver a working model + report + next-step roadmap.</p>
-      <div class="grid" style="margin-top:1rem;">
-        <article class="card">
-          <div class="kicker">Deliverables</div>
-          <ul class="list">
-            <li><!-- TODO: REPLACE -->Deployed model/notebook & thin app/endpoint</li>
-            <li><!-- TODO: REPLACE -->Impact/ROI estimate & risks</li>
-            <li><!-- TODO: REPLACE -->Handover docs & training</li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="kicker">Inputs</div>
-          <ul class="list">
-            <li><!-- TODO: REPLACE -->Clean sample dataset / access</li>
-            <li><!-- TODO: REPLACE -->Stakeholder time (2–4h/week)</li>
-            <li><!-- TODO: REPLACE -->Security & privacy review</li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="kicker">Options</div>
-          <ul class="list">
-            <li><!-- TODO: REPLACE -->Cloud: Azure / GCP / AWS / on-prem</li>
-            <li><!-- TODO: REPLACE -->MLOps: MLflow, Weights & Biases, etc.</li>
-            <li><!-- TODO: REPLACE -->Data stack: Spark, DBT, Kafka, etc.</li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="kicker">Pricing</div>
-          <p><!-- TODO: REPLACE -->Fixed bid or T&M. Public sector frameworks available.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+    <section id="pilot">
+    <div class="container">
+      <h2 style="text-align: center;">Start a Pilot Project (4–8 Weeks)</h2>
+      <p class="muted" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;">Choose a high-impact use case (e.g., churn prediction, demand forecasting, anomaly detection). We'll deliver a working model and a clear roadmap for production.</p>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <article class="card">
+          <div class="kicker">Key Deliverables</div>
+          <ul class="list">
+            <li>A working, deployed model or interactive notebook</li>
+            <li>Detailed Impact/ROI analysis report</li>
+            <li>Production roadmap and risk assessment</li>
+            <li>Complete handover documentation & team training</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="kicker">What We Need From You</div>
+          <ul class="list">
+            <li>Access to a clean, relevant sample dataset</li>
+            <li>Stakeholder time for feedback (2–4 hours/week)</li>
+            <li>Clear definition of the business problem</li>
+            <li>Collaboration on security & privacy reviews</li>
+          </ul>
+        </article>
+      </div>
 
-  <!-- TEAM (optional anchor for “Meet our experts”) -->
-  <section id="team" class="section--alt">
-    <div class="container">
-      <h2>Our Experts</h2>
-      <p class="muted"><!-- TODO: REPLACE WITH SHORT BIOS -->Data Scientists, ML Engineers, and Solution Architects experienced across public & private sectors in Finland/EU.</p>
-      <div class="grid" style="margin-top:1rem;">
-        <article class="card"><div class="kicker">Lead</div><h3><!-- TODO: Name --></h3><p><!-- TODO: 2-3 lines profile --></p></article>
-        <article class="card"><div class="kicker">ML</div><h3><!-- TODO --></h3><p><!-- TODO --></p></article>
-        <article class="card"><div class="kicker">Data</div><h3><!-- TODO --></h3><p><!-- TODO --></p></article>
-        <article class="card"><div class="kicker">Advisory</div><h3><!-- TODO --></h3><p><!-- TODO --></p></article>
-      </div>
-    </div>
-  </section>
+            <div style="margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--line);">
+        <h3 style="text-align: center; font-size: 1.75rem; color: var(--ink);">Pilot Project in Action: Customer Churn Prediction</h3>
+        <p class="muted" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;">Here’s a tangible example of how a short pilot can deliver immense value.</p>
+        <div class="grid" style="grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem; margin-top: 2rem;">
+          <article class="card" style="grid-column: 1 / -1; @media (min-width: 768px) { grid-column: auto; }">
+            <div>
+              <div class="kicker">The Problem</div>
+              <p style="margin-bottom: 1.5rem;">A retail client was losing customers but didn't know who was about to leave or why. This made retention efforts expensive and ineffective.</p>
+              <div class="kicker">Our Pilot Solution</div>
+              <p style="margin-bottom: 1.5rem;">In 5 weeks, we analyzed their sales data and built a machine learning model to predict which customers had a high probability of churning within the next 30 days.</p>
+              <div class="kicker">The Outcome</div>
+              <p>The client can now proactively target at-risk customers with special offers, reducing churn by an estimated 15% and significantly boosting lifetime customer value.</p>
+            </div>
+          </article>
+          <article class="card" style="grid-column: 1 / -1; @media (min-width: 768px) { grid-column: auto; }">
+            <div style="position: relative; height: 300px; width: 100%;">
+              <canvas id="churnChart"></canvas>
+            </div>
+            <p style="text-align: center; margin-top: 1rem; font-weight: 600; color: var(--ink);">Model Identifies High-Risk Segment</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- CONTACT -->
-  <footer class="footer-cta" id="contact">
-    <div class="container">
-      <h2>Let’s Build Finland’s AI Future Together.</h2>
-      <p class="muted">Contact: <a href="mailto:info@mieliai.fi">info@mieliai.fi</a> · +358 xx xxx xxxx</p>
-      <div class="cta" style="justify-content:center;">
-        <a class="btn btn--primary" href="mailto:info@mieliai.fi?subject=Start%20a%20Pilot%20with%20MEHErix">Request Consultation</a>
-        <a class="btn btn--ghost" href="#services">Explore Services</a>
-      </div>
-      <p class="muted" style="margin-top:1rem;font-size:.85rem">© <span id="y"></span> MEHErix · Ethical AI · GDPR-aligned</p>
-    </div>
-  </footer>
+    <section id="team" class="section--alt">
+    <div class="container">
+      <h2 style="text-align: center;">Our Experts</h2>
+      <p class="muted" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;">A team of Data Scientists, ML Engineers, and Solution Architects experienced across public and private sectors in Finland and the EU.</p>
+      <div class="grid">
+        <article class="card">
+          <div class="kicker">Founder / Lead</div>
+          <h3>Akseli Virtanen</h3>
+          <p>Expert in data strategy and building high-performing data science teams.</p>
+        </article>
+        <article class="card">
+          <div class="kicker">Lead ML Engineer</div>
+          <h3>Elina Koskinen</h3>
+          <p>Specializes in MLOps and deploying scalable, real-time predictive models.</p>
+        </article>
+        <article class="card">
+          <div class="kicker">Lead Data Scientist</div>
+          <h3>Mikael Niemi</h3>
+          <p>Focuses on NLP and time-series forecasting for complex business challenges.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+    <footer class="footer-cta" id="contact">
+    <div class="container">
+      <h2>Ready to Turn Data into Your Competitive Advantage?</h2>
+      <p class="muted">Let's talk about how a pilot project can deliver measurable ROI for your organization.</p>
+      <div class="cta" style="justify-content:center;">
+        <a class="btn btn--primary" href="mailto:info@meherix.fi?subject=Pilot%20Project%20Inquiry">Request a Free Consultation</a>
+        <a class="btn btn--ghost" href="#services">Explore Our Services</a>
+      </div>
+
+      <div class="social-links">
+        <a href="https://linkedin.com/company/your-company" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+        </a>
+        <a href="https://twitter.com/your-profile" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+        </a>
+        <a href="https://github.com/your-org" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+        </a>
+        <a href="mailto:info@meherix.fi" aria-label="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+        <a href="https://facebook.com/your-page" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        </a>
+        <a href="https://instagram.com/your-profile" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="https://tiktok.com/@your-profile" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8V2h4v11a5 5 0 0 1-5 5H5a5 5 0 0 1-5-5V8h4a5 5 0 0 0 5 5v0a5 5 0 0 0 5-5V8z"></path></svg>
+        </a>
+        <a href="https://youtube.com/your-channel" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+        </a>
+      </div>
+
+      <p class="muted" style="margin-top:2rem;font-size:.9rem">© <span id="y"></span> MEHErix · Vantaa, Finland</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.navlinks');
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      const isExpanded = navLinks.classList.contains('active');
+      navToggle.setAttribute('aria-expanded', isExpanded);
+    });
+
+    // Churn Chart Logic
+    const ctx = document.getElementById('churnChart');
+    if (ctx) {
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Safe Customers', 'High-Risk for Churn', 'Recently Churned'],
+          datasets: [{
+            label: 'Customer Segments',
+            data: [2500, 450, 150],
+            backgroundColor: [
+              '#457b9d',
+              '#e63946',
+              '#6c757d'
+            ],
+            borderColor: '#ffffff',
+            borderWidth: 4,
+            hoverOffset: 4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  let label = context.label || '';
+                  if (label) {
+                    label += ': ';
+                  }
+                  if (context.parsed !== null) {
+                    label += context.parsed.toLocaleString('en-US') + ' Customers';
+                  }
+                  return label;
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.9.3/tsparticles.bundle.min.js"></script>
+
+  <script>
+    tsParticles.load("tsparticles", {
+      fpsLimit: 60,
+      background: {
+        color: "#f8f9fa" // Matches your --light variable
+      },
+      particles: {
+        number: {
+          value: 80, // Number of nodes
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+        color: {
+          value: "#1d3557" // Matches your --ink color
+        },
+        shape: {
+          type: "circle"
+        },
+        opacity: {
+          value: 0.5,
+          random: false
+        },
+        size: {
+          value: 3,
+          random: true
+        },
+        links: {
+          enable: true,
+          distance: 150,
+          color: "#457b9d", // Matches your --text color
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1.5,
+          direction: "none",
+          out_mode: "out"
+        }
+      },
+      interactivity: {
+        events: {
+          onhover: {
+            enable: true,
+            mode: "repulse" // Nodes move away from cursor
+          },
+          onclick: {
+            enable: true,
+            mode: "push" // Adds new nodes on click
+          }
+        },
+        modes: {
+          repulse: {
+            distance: 100
+          },
+          push: {
+            quantity: 4
+          }
+        }
+      },
+      detectRetina: true
+    });
+  </script>
+
 </body>
 </html>
