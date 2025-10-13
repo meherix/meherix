@@ -159,13 +159,41 @@
       display: flex;
       gap: 1.5rem;
       font-weight: 600;
-      align-items: center; /* Ensures proper alignment */
+      align-items: center;
     }
 
-    .navlinks a:hover {
-      color: var(--brand)
+    /* ====== NEW HOVER/ACTIVE EFFECTS ADDED HERE ====== */
+    .navlinks a:not(.btn) {
+        position: relative;
+        padding: 4px 0;
+        transition: color 0.2s ease;
     }
 
+    .navlinks a:not(.btn)::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: var(--brand);
+        bottom: 0;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.3s ease-out;
+    }
+    
+    .navlinks a:not(.btn):hover {
+      color: var(--brand);
+    }
+
+    .navlinks a:not(.btn):hover::after {
+        transform: scaleX(1);
+    }
+
+    .navlinks a:not(.btn):active {
+        transform: translateY(1px);
+    }
+    
     .hero {
       display: grid;
       grid-template-columns: 1fr;
@@ -200,18 +228,21 @@
       gap: .5rem;
       transition: .2s ease
     }
+    
+    .btn:active {
+        transform: translateY(0px) scale(0.98);
+        filter: brightness(0.9);
+    }
 
+    /* ====== BUTTON STYLE REVERTED TO SOLID COLOR ====== */
     .btn--primary {
-      background-color: var(--brand);
-      background-image: linear-gradient(135deg, #0077b6 0%, #005a8d 100%);
+      background: var(--brand);
       color: var(--brand-ink);
-      border: none;
     }
 
     .btn--primary:hover {
       filter: brightness(.95);
       transform: translateY(-2px);
-      color: var(--brand-ink); /* Keep text color white on hover */
     }
 
     .btn--ghost {
