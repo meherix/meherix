@@ -58,7 +58,7 @@
       color: var(--text);
       background: var(--bg);
       line-height: 1.6;
-      padding-top: 70px; /* Prevents content from hiding under the fixed nav */
+      padding-top: 70px;
     }
 
     h1,
@@ -371,15 +371,12 @@
       width: 0;
     }
     .typing-effect.is-typing {
+      /* The blink animation will run 3 times (2.25s) and stop. */
+      /* The final 'to' state of the blink is transparent, hiding the cursor. */
       animation:
         typing 2s steps(var(--char-count, 20), end) forwards,
-        blink-caret .75s step-end infinite;
+        blink-caret .75s step-end 3;
     }
-    .typing-effect.typing-done {
-      border-right-color: transparent;
-      animation: none;
-    }
-
 
     .footer-cta {
       padding: clamp(3rem, 6vw, 5rem) 0;
@@ -901,15 +898,6 @@
     // ====== JAVASCRIPT FOR TYPING ANIMATION ======
     document.addEventListener("DOMContentLoaded", function() {
       const typingElements = document.querySelectorAll(".typing-effect");
-
-      // Hide cursor when animation ends
-      typingElements.forEach(el => {
-        el.addEventListener('animationend', (e) => {
-          if (e.animationName === 'typing') {
-            el.classList.add('typing-done');
-          }
-        });
-      });
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
