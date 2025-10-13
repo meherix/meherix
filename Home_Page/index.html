@@ -720,8 +720,7 @@
                         <div class="kicker">Step 3</div>
                         <h3>Pilot Build & Iterate</h3>
                         <p>We build a working prototype, validating it with real data while keeping you in the loop.</p>
-                    </div>
-                </article>
+                    </article>
                 <article class="card">
                     <div class="icon">🚀</div>
                     <div>
@@ -761,10 +760,10 @@
                 </article>
             </div>
 
-            <div class="section-cta" style="margin-top: 3rem; padding-top: clamp(3rem, 6vw, 4rem); border-top: none;">
+            <div style="margin-top: 3rem; padding-top: clamp(3rem, 6vw, 4rem); border-top: 1px solid var(--line);">
                 <div class="container" style="max-width: 900px;">
                     <h3 style="text-align: center; font-size: 1.75rem;">Pilot Project in Action: Customer Churn Prediction</h3>
-                    <p style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;">Here’s a tangible example of how a short pilot can deliver immense value.</p>
+                    <p class="muted" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;">Here’s a tangible example of how a short pilot can deliver immense value.</p>
                     <div class="grid" style="grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem; margin-top: 2rem;">
                         <article class="card" style="grid-column: 1 / -1; @media (min-width: 768px) { grid-column: auto; }">
                             <div>
@@ -780,7 +779,7 @@
                             <div style="position: relative; height: 300px; width: 100%;">
                                 <canvas id="churnChart"></canvas>
                             </div>
-                            <p style="text-align: center; margin-top: 1rem; font-weight: 600;">Model Identifies High-Risk Segment</p>
+                            <p style="text-align: center; margin-top: 1rem; font-weight: 600; color: var(--ink);">Model Identifies High-Risk Segment</p>
                         </article>
                     </div>
                 </div>
@@ -888,7 +887,7 @@
             legend: {
               position: 'bottom',
               labels: {
-                color: '#fff' // Set legend text color to white for dark background
+                color: '#333' // Set legend text color to a dark color for white background
               }
             },
             tooltip: {
