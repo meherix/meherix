@@ -162,7 +162,7 @@
       align-items: center;
     }
 
-    /* Styles for all navigation links now, including Contact */
+    /* Styles for all navigation links */
     .navlinks a {
         position: relative;
         padding: 4px 0;
@@ -209,6 +209,8 @@
       font-size: clamp(1rem, .5vw + .9rem, 1.125rem);
       max-width: 58ch;
       margin-inline: auto;
+      text-align: justify; /* Added for justification */
+      hyphens: auto; /* To help with justification */
     }
 
     .cta {
@@ -446,7 +448,6 @@
         .navlinks.active {
             display: flex;
         }
-        /* No specific button styles for mobile navlinks needed if all are text now */
     }
 
     .sr-only {
@@ -506,10 +507,10 @@
     <div class="container">
       <div class="hero">
         <div>
-          <h1>Turning Data Into Intelligence. Driving AI Into Action.</h1>
-          <p>Our Data Scientists and ML Engineers help businesses, cities, and communities harness data, build models, and deploy safe, GDPR-aligned AI with measurable ROI.</p>
+          <h1>Turning Data Into Intelligence.<br>Driving AI Into Action.</h1>
+          <p>Our experts help businesses, cities, and communities harness data, build models, and deploy safe, GDPR-aligned AI with measurable ROI.</p>
           <div class="cta">
-            <a class="btn btn--primary" href="#pilot">Start a Pilot Project</a>
+            <a class="btn btn--ghost" href="#pilot">Start a Pilot Project</a>
             <a class="btn btn--ghost" href="#team">Meet Our Experts</a>
           </div>
         </div>
