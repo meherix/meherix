@@ -411,13 +411,32 @@
         typing 2s steps(var(--char-count, 20), end) forwards,
         blink-caret .75s step-end 3 forwards;
     }
-
+    
+    /* ====== SECTION STYLES UPDATED HERE ====== */
+    @keyframes gradient-pan {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
     .section-cta {
       padding: clamp(3rem, 6vw, 4rem) 0;
-      background: var(--light);
       text-align: center;
+      color: #fff;
+      background: linear-gradient(-45deg, var(--ink), var(--brand), #0d1b2a, var(--ink));
+      background-size: 400% 400%;
+      animation: gradient-pan 15s ease-in-out infinite;
     }
-    
+    .section-cta .btn--creative {
+      color: #fff;
+      background: transparent;
+    }
+    .section-cta .btn--creative:hover {
+      color: var(--ink);
+    }
+    .section-cta h2, .section-cta p {
+      color: #fff;
+    }
+
     .footer-cta {
       padding: clamp(3rem, 6vw, 4rem) 0;
       background: var(--ink);
@@ -761,7 +780,7 @@
     <section id="more-examples" class="section-cta">
         <div class="container" style="text-align: center;">
             <h2 style="font-size: clamp(1.6rem, 2vw + 1rem, 2.2rem);">Explore Our Pilot Projects</h2>
-            <p class="muted">See more real-world examples of how we turn data into measurable business outcomes.</p>
+            <p class="muted" style="color: var(--text);">See more real-world examples of how we turn data into measurable business outcomes.</p>
             <div class="cta">
                 <a href="#" class="btn btn--creative">Find More Example Pilot</a>
             </div>
