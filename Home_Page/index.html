@@ -371,11 +371,10 @@
       width: 0;
     }
     .typing-effect.is-typing {
-      /* The blink animation will run 3 times (2.25s) and stop. */
-      /* The final 'to' state of the blink is transparent, hiding the cursor. */
+      /* This runs the typing animation once, and the blink animation 3 times, then stops both. */
       animation:
         typing 2s steps(var(--char-count, 20), end) forwards,
-        blink-caret .75s step-end 3;
+        blink-caret .75s step-end 3 forwards; /* Added 'forwards' here to fix cursor */
     }
 
     .footer-cta {
