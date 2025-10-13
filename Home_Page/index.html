@@ -21,7 +21,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -54,7 +54,7 @@
 
     body {
       margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
       color: var(--text);
       background: var(--bg);
       line-height: 1.6;
@@ -328,22 +328,25 @@
       margin-bottom: 1rem;
     }
     
+    /* Removed underline specific styles from .headline-decorated if it was used for this */
     .headline-decorated {
         position: relative;
         display: inline-block;
-        padding-bottom: 15px;
+        /* Padding bottom kept for visual spacing if needed, but not for underline */
+        padding-bottom: 0px; /* Adjusted padding as underline is removed */
     }
 
     .headline-decorated::after {
+        /* This entire block can be removed or commented out if no underline is desired anywhere this class is used */
         content: '';
         position: absolute;
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 60px;
-        height: 4px;
-        background-color: var(--brand);
-        border-radius: 2px;
+        width: 0px; /* Set width to 0 to effectively hide it */
+        height: 0px; /* Set height to 0 to effectively hide it */
+        background-color: transparent; /* Make it transparent just in case */
+        border-radius: 0px; /* Remove border-radius if not needed */
     }
 
     /* ====== TYPING ANIMATION & FONT STYLES ====== */
@@ -356,8 +359,9 @@
       50% { border-color: var(--brand); }
     }
     .section-headline {
+      font-family: 'Montserrat', sans-serif;
       font-size: clamp(1.8rem, 2.5vw + 0.8rem, 2.4rem);
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.5px;
       text-align: center;
       height: 1.2em;
@@ -371,10 +375,9 @@
       width: 0;
     }
     .typing-effect.is-typing {
-      /* This runs the typing animation once, and the blink animation 3 times, then stops both. */
       animation:
         typing 2s steps(var(--char-count, 20), end) forwards,
-        blink-caret .75s step-end 3 forwards; /* Added 'forwards' here to fix cursor */
+        blink-caret .75s step-end 3 forwards;
     }
 
     .footer-cta {
@@ -719,8 +722,7 @@
 
     <section id="team" class="section--alt">
         <div class="container" style="text-align: center; max-width: 800px;">
-            <h2 class="section-headline headline-decorated">
-              <span class="typing-effect" style="--char-count: 11;">Our Experts</span>
+            <h2 class="section-headline"> <span class="typing-effect" style="--char-count: 11;">Our Experts</span>
             </h2>
             <p style="font-size: 1.25rem; color: var(--ink); font-weight: 600; margin-top: 2rem; margin-bottom: .5rem;">The Minds Behind Intelligent Transformation</p>
             <p class="muted" style="line-height: 1.7;">At MEHErix, our experts bring together cutting-edge knowledge in Artificial Intelligence, Data Science, Engineering, and Strategy. We work as one unified team — combining innovation, precision, and ethical responsibility to turn insight into impact.</p>
