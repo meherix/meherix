@@ -417,27 +417,44 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
+    /* Styles for animated sections */
     .section-cta, .footer-cta {
       padding: clamp(3rem, 6vw, 4rem) 0;
       text-align: center;
-      color: #fff;
+      color: #fff; /* Default text color for dark sections */
       background: linear-gradient(-45deg, var(--ink), var(--brand), #0d1b2a, var(--ink));
       background-size: 400% 400%;
       animation: gradient-pan 15s ease-in-out infinite;
     }
+    /* Ensure headings and paragraphs are white within animated sections */
     .section-cta h2, .section-cta p,
+    .section-cta h3,
     .footer-cta h2, .footer-cta .muted {
       color: #fff;
     }
     
+    /* Creative button styling for dark backgrounds */
     .section-cta .btn--creative {
       color: #fff;
       background: transparent;
     }
     .section-cta .btn--creative:hover {
-      color: var(--ink);
+      color: var(--ink); /* Text becomes dark on hover */
     }
 
+    /* Styles for the static dark section (formerly animated 'explore pilot projects') */
+    .section--dark-static {
+      padding: clamp(3rem, 6vw, 4rem) 0;
+      text-align: center;
+      background: var(--ink); /* Solid dark blue background */
+      color: #fff; /* White text */
+    }
+    .section--dark-static h2, .section--dark-static p {
+      color: #fff;
+    }
+
+    /* Ghost buttons for dark backgrounds */
     .footer-cta .btn--ghost {
         color: #fff;
         border-color: rgba(255,255,255, .3);
@@ -744,32 +761,34 @@
                 </article>
             </div>
 
-            <div style="margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--line);">
-                <h3 style="text-align: center; font-size: 1.75rem; color: var(--ink);">Pilot Project in Action: Customer Churn Prediction</h3>
-                <p class="muted" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;">Here’s a tangible example of how a short pilot can deliver immense value.</p>
-                <div class="grid" style="grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem; margin-top: 2rem;">
-                    <article class="card" style="grid-column: 1 / -1; @media (min-width: 768px) { grid-column: auto; }">
-                        <div>
-                            <div class="kicker">The Problem</div>
-                            <p style="margin-bottom: 1.5rem;">A retail client was losing customers but didn't know who was about to leave or why. This made retention efforts expensive and ineffective.</p>
-                            <div class="kicker">Our Pilot Solution</div>
-                            <p style="margin-bottom: 1.5rem;">In 5 weeks, we analyzed their sales data and built a machine learning model to predict which customers had a high probability of churning within the next 30 days.</p>
-                            <div class="kicker">The Outcome</div>
-                            <p>The client can now proactively target at-risk customers with special offers, reducing churn by an estimated 15% and significantly boosting lifetime customer value.</p>
-                        </div>
-                    </article>
-                    <article class="card" style="grid-column: 1 / -1; @media (min-width: 768px) { grid-column: auto; }">
-                        <div style="position: relative; height: 300px; width: 100%;">
-                            <canvas id="churnChart"></canvas>
-                        </div>
-                        <p style="text-align: center; margin-top: 1rem; font-weight: 600; color: var(--ink);">Model Identifies High-Risk Segment</p>
-                    </article>
+            <div class="section-cta" style="margin-top: 3rem; padding-top: clamp(3rem, 6vw, 4rem); border-top: none;">
+                <div class="container" style="max-width: 900px;">
+                    <h3 style="text-align: center; font-size: 1.75rem;">Pilot Project in Action: Customer Churn Prediction</h3>
+                    <p style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;">Here’s a tangible example of how a short pilot can deliver immense value.</p>
+                    <div class="grid" style="grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem; margin-top: 2rem;">
+                        <article class="card" style="grid-column: 1 / -1; @media (min-width: 768px) { grid-column: auto; }">
+                            <div>
+                                <div class="kicker">The Problem</div>
+                                <p style="margin-bottom: 1.5rem;">A retail client was losing customers but didn't know who was about to leave or why. This made retention efforts expensive and ineffective.</p>
+                                <div class="kicker">Our Pilot Solution</div>
+                                <p style="margin-bottom: 1.5rem;">In 5 weeks, we analyzed their sales data and built a machine learning model to predict which customers had a high probability of churning within the next 30 days.</p>
+                                <div class="kicker">The Outcome</div>
+                                <p>The client can now proactively target at-risk customers with special offers, reducing churn by an estimated 15% and significantly boosting lifetime customer value.</p>
+                            </div>
+                        </article>
+                        <article class="card" style="grid-column: 1 / -1; @media (min-width: 768px) { grid-column: auto; }">
+                            <div style="position: relative; height: 300px; width: 100%;">
+                                <canvas id="churnChart"></canvas>
+                            </div>
+                            <p style="text-align: center; margin-top: 1rem; font-weight: 600;">Model Identifies High-Risk Segment</p>
+                        </article>
+                    </div>
                 </div>
             </div>
-        </div>
+            </div>
     </section>
 
-    <section id="more-examples" class="section-cta">
+    <section id="more-examples" class="section--dark-static">
         <div class="container" style="text-align: center;">
             <h2 style="font-size: clamp(1.6rem, 2vw + 1rem, 2.2rem);">Explore Our Pilot Projects</h2>
             <p>See more real-world examples of how we turn data into measurable business outcomes.</p>
@@ -868,6 +887,9 @@
           plugins: {
             legend: {
               position: 'bottom',
+              labels: {
+                color: '#fff' // Set legend text color to white for dark background
+              }
             },
             tooltip: {
               callbacks: {
