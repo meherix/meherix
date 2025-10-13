@@ -443,17 +443,6 @@
       color: var(--ink); /* Text becomes dark on hover */
     }
 
-    /* Styles for the static dark section (formerly animated 'explore pilot projects') */
-    .section--dark-static {
-      padding: clamp(3rem, 6vw, 4rem) 0;
-      text-align: center;
-      background: var(--ink); /* Solid dark blue background */
-      color: #fff; /* White text */
-    }
-    .section--dark-static h2, .section--dark-static p {
-      color: #fff;
-    }
-
     /* Ghost buttons for dark backgrounds */
     .footer-cta .btn--ghost {
         color: #fff;
@@ -787,11 +776,9 @@
             </div>
     </section>
 
-    <section id="more-examples" class="section--dark-static">
-        <div class="container" style="text-align: center;">
+    <section id="more-examples"> <div class="container" style="text-align: center;">
             <h2 style="font-size: clamp(1.6rem, 2vw + 1rem, 2.2rem);">Explore Our Pilot Projects</h2>
-            <p>See more real-world examples of how we turn data into measurable business outcomes.</p>
-            <div class="cta">
+            <p class="muted">See more real-world examples of how we turn data into measurable business outcomes.</p> <div class="cta">
                 <a href="#" class="btn btn--creative">Find More Example Pilot</a>
             </div>
         </div>
