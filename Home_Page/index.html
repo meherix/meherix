@@ -158,7 +158,8 @@
     .navlinks {
       display: flex;
       gap: 1.5rem;
-      font-weight: 600
+      font-weight: 600;
+      align-items: center; /* Ensures proper alignment */
     }
 
     .navlinks a:hover {
@@ -209,7 +210,8 @@
 
     .btn--primary:hover {
       filter: brightness(.95);
-      transform: translateY(-2px)
+      transform: translateY(-2px);
+      color: var(--brand-ink); /* Keep text color white on hover */
     }
 
     .btn--ghost {
@@ -461,10 +463,10 @@
         <span class="icon-bar"></span>
       </button>
       <div class="navlinks">
-        <a href="#about" class="btn btn--primary" style="padding:.55rem 1rem;">About</a>
-        <a href="#services" class="btn btn--primary" style="padding:.55rem 1rem;">Services</a>
-        <a href="#process" class="btn btn--primary" style="padding:.55rem 1rem;">Process</a>
-        <a href="#pilot" class="btn btn--primary" style="padding:.55rem 1rem;">Pilot</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#pilot">Pilot</a>
         <a href="#contact" class="btn btn--primary" style="padding:.55rem 1rem;">Contact</a>
       </div>
     </div>
