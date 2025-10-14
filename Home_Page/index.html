@@ -365,18 +365,6 @@
       margin-bottom: 1rem;
     }
     
-    .headline-decorated::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60px;
-        height: 4px;
-        background-color: var(--brand);
-        border-radius: 2px;
-    }
-
     @keyframes typing {
       from { width: 0; }
       to { width: 100%; }
@@ -455,6 +443,23 @@
     .social-links a:hover svg {
       stroke: #ffffff;
       transform: translateY(-2px);
+    }
+
+    /* ====== NEW FOOTER LINKS STYLE ====== */
+    .footer-links {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .footer-links a:hover {
+      color: #fff;
+      text-decoration: underline;
     }
 
     .muted {
@@ -722,7 +727,7 @@
                 <article class="card">
                     <div class="kicker">Key Deliverables</div>
                     <ul class="list">
-                        <li>A working, deployed model or interactive notebook</li>
+                        <li>A working, deployed model or interactive dashboard</li>
                         <li>Detailed Impact/ROI analysis report</li>
                         <li>Production roadmap and risk assessment</li>
                         <li>Complete handover documentation & team training</li>
@@ -815,8 +820,15 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 L11 13 L2 9 L22 2 Z M22 2 L15 22 L11 13 L22 2 Z"></path></svg>
             </a>
         </div>
+        
+        <div class="footer-links">
+          <a href="#">Privacy notice</a>
+          <a href="#">Terms of use</a>
+          <a href="#">Cookies</a>
+          <a href="#">Career</a>
+        </div>
 
-        <p class="muted" style="margin-top:2rem;font-size:.9rem">© <span id="y"></span> MEHErix Oy · Vantaa, Finland</p>
+        <p class="muted" style="margin-top:2rem;font-size:.9rem">© <span id="y"></span> MEHErix Oy all rights reserved</p>
     </div>
   </footer>
 
@@ -859,7 +871,7 @@
             legend: {
               position: 'bottom',
               labels: {
-                color: '#333' // Set legend text color to a dark color for white background
+                color: '#333'
               }
             },
             tooltip: {
