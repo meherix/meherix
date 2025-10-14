@@ -167,14 +167,13 @@
       align-items: center;
     }
 
-    .navlinks a {
+    .navlinks a:not(.btn) {
         position: relative;
         padding: 4px 0;
         transition: color 0.2s ease, transform 0.1s ease-out;
-        color: var(--text);
     }
 
-    .navlinks a::after {
+    .navlinks a:not(.btn)::after {
         content: '';
         position: absolute;
         width: 100%;
@@ -187,17 +186,16 @@
         transition: transform 0.3s ease-out;
     }
     
-    .navlinks a:hover {
+    .navlinks a:not(.btn):hover {
       color: var(--brand);
     }
 
-    .navlinks a:hover::after {
+    .navlinks a:not(.btn):hover::after {
         transform: scaleX(1);
     }
 
     .navlinks a:active {
         transform: translateY(1px) scale(0.98);
-        color: var(--brand);
     }
     
     .hero {
@@ -445,7 +443,6 @@
       transform: translateY(-2px);
     }
 
-    /* ====== NEW FOOTER LINKS STYLE ====== */
     .footer-links {
       margin-top: 2rem;
       padding-top: 1.5rem;
@@ -460,6 +457,60 @@
     .footer-links a:hover {
       color: #fff;
       text-decoration: underline;
+    }
+
+    /* ====== LANGUAGE SWITCHER STYLES ====== */
+    .lang-switcher {
+      position: relative;
+    }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      color: var(--text);
+      padding: 4px 8px;
+    }
+    .lang-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+    }
+    .lang-btn:hover {
+      color: var(--brand);
+    }
+    .lang-dropdown {
+      position: absolute;
+      top: calc(100% + 10px);
+      right: 0;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      padding: 0.5rem;
+      min-width: 120px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity .2s ease, transform .2s ease, visibility .2s;
+    }
+    .lang-switcher.active .lang-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .lang-dropdown a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      font-weight: 500;
+    }
+    .lang-dropdown a:hover {
+      background: var(--light);
+      color: var(--brand);
     }
 
     .muted {
@@ -522,6 +573,9 @@
         .navlinks.active {
             display: flex;
         }
+        .lang-switcher {
+          margin-top: 1rem;
+        }
     }
 
     .sr-only {
@@ -573,6 +627,17 @@
         <a href="#process">Process</a>
         <a href="#pilot">Pilot</a>
         <a href="#contact">Contact</a>
+        
+        <div class="lang-switcher">
+          <button class="lang-btn" aria-label="Change language" aria-haspopup="true" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </button>
+          <div class="lang-dropdown" role="menu">
+            <a href="#" role="menuitem" lang="en">English</a>
+            <a href="#" role="menuitem" lang="fi">Suomi</a>
+            <a href="#" role="menuitem" lang="sv">Svenska</a>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -837,11 +902,27 @@
 
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.navlinks');
+    const langSwitcher = document.querySelector('.lang-switcher');
+    const langBtn = document.querySelector('.lang-btn');
 
     navToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
       const isExpanded = navLinks.classList.contains('active');
       navToggle.setAttribute('aria-expanded', isExpanded);
+    });
+    
+    langBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langSwitcher.classList.toggle('active');
+      const isExpanded = langSwitcher.classList.contains('active');
+      langBtn.setAttribute('aria-expanded', isExpanded);
+    });
+    
+    document.addEventListener('click', (e) => {
+      if (!langSwitcher.contains(e.target)) {
+        langSwitcher.classList.remove('active');
+        langBtn.setAttribute('aria-expanded', 'false');
+      }
     });
 
     // Churn Chart Logic
