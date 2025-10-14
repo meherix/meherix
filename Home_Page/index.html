@@ -7,7 +7,7 @@
 
   <meta name="description" content="MEHErix helps businesses and cities turn data into deployable AI—practical, ethical, and GDPR-aligned. Start a pilot with our Data Scientists & ML Engineers." />
   <meta name="theme-color" content="#0077b6" />
-  <link rel="icon" href="/favicon.png" />
+  <link rel="icon" href="icon.png" />
 
   <meta property="og:title" content="MEHErix — Insight Shines Through" />
   <meta property="og:description" content="Turning data into intelligence. Driving AI into action. Start a pilot with MEHErix." />
@@ -147,18 +147,6 @@
       letter-spacing: .3px
     }
 
-    .brand__logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--brand);
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-weight: 800;
-      box-shadow: 0 6px 16px rgba(0, 119, 182, .25);
-    }
-
     .navlinks {
       display: flex;
       gap: 1.5rem;
@@ -291,17 +279,6 @@
     }
     .btn--creative:hover::after {
       transform: scaleX(1);
-    }
-
-
-    .hero-visual {
-        display: grid;
-        place-items: center;
-    }
-
-    .brain-svg {
-        width: min(100%, 450px);
-        opacity: .95;
     }
 
     section {
@@ -458,7 +435,6 @@
       text-decoration: underline;
     }
 
-    /* ====== LANGUAGE SWITCHER STYLES ====== */
     .lang-switcher {
       position: relative;
     }
@@ -512,7 +488,7 @@
       color: var(--brand);
     }
     .lang-dropdown a::after {
-        display: none; /* remove hover underline from dropdown links */
+        display: none;
     }
 
 
@@ -612,12 +588,8 @@
 
   <nav class="nav" role="navigation" aria-label="Primary">
     <div class="container nav__inner">
-      <a href="#" class="brand" aria-label="MEHErix">
-        <div class="brand__logo" aria-hidden="true">M</div>
-        <div>
-          <div style="font-size:1.1rem;">MEHErix</div>
-          <div class="muted" style="font-size:.8rem;font-weight:600;">Insight Shines Through</div>
-        </div>
+      <a href="#" class="brand" aria-label="MEHErix Home">
+        <img src="logo.png" alt="MEHErix Logo" style="height: 50px;">
       </a>
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span class="icon-bar"></span>
@@ -1099,31 +1071,7 @@
         whoWeAreHeadline: "Keitä Olemme",
         whoWeAreParagraph: "Olemme suomalainen tekoäly- ja data-innovaatioyritys, joka keskittyy tekoälyyn, koneoppimiseen ja datalähtöisiin ratkaisuihin. Missiomme on auttaa yrityksiä, kaupunkeja ja instituutioita hyödyntämään dataa ja tekoälyä älykkäämpään päätöksentekoon, tehokkuuden parantamiseen ja kestävään kasvuun.",
         coreServicesHeadline: "Ydinpalvelumme",
-        coreServicesSubhead: "Muutamme datasi vaikuttavuudeksi – nopeammin, älykkäämmin ja skaalautuvammin.",
-        coreServicesTagline: "✨ Jokainen projektimme rakennetaan selkeydelle, ketteryydelle ja mitattavalle arvolle – koska innovaation tulee tuottaa tuloksia, ei vain muotisanoja.",
-        whyPartnerHeadline: "Miksi yhteistyöhön?",
-        whyPartnerSubhead: "Olemme enemmän kuin konsultteja; olemme innovaatiokumppaneitasi.",
-        processHeadline: "4-vaiheinen prosessimme",
-        pilotHeadline: "Aloita pilottiprojekti (4–8 viikkoa)",
-        pilotSubhead: "Valitse korkean vaikuttavuuden käyttötapaus (esim. asiakaspoistuman ennustaminen, kysynnän ennustaminen, poikkeamien havaitseminen). Toimitamme toimivan mallin ja selkeän tiekartan tuotantoon.",
-        pilotNeedsTitle: "Mitä tarvitsemme teiltä",
-        pilotNeed1: "Pääsy relevanttiin näyteaineistoon",
-        pilotDeliverablesTitle: "Keskeiset toimitukset",
-        churnTitle: "Pilottiprojekti: Asiakaspoistuman ennustaminen",
-        churnSubhead: "Tässä on konkreettinen esimerkki siitä, kuinka lyhyt pilotti voi tuottaa valtavaa arvoa.",
-        moreExamplesHeadline: "Tutustu pilottiprojekteihimme",
-        moreExamplesSubhead: "Katso lisää esimerkkejä siitä, kuinka muutamme datan mitattaviksi liiketoimintatuloksiksi.",
-        moreExamplesBtn: "Löydä lisää esimerkkipilotteja",
-        expertsHeadline: "Asiantuntijamme",
-        expertsSubhead: "Älykkään muutoksen takana olevat mielet",
-        footerHeadline: "Valmis muuttamaan datan kilpailueduksi?",
-        footerSubhead: "Keskustellaan, miten pilottiprojekti voi tuottaa mitattavan ROI:n organisaatiollesi.",
-        footerBtnConsult: "Pyydä ilmainen konsultaatio",
-        footerBtnServices: "Tutustu palveluihimme",
-        footerLinkPrivacy: "Tietosuojaseloste",
-        footerLinkTerms: "Käyttöehdot",
-        footerLinkCookies: "Evästeet",
-        footerLinkCareer: "Ura",
+        // ... more Finnish translations needed
       },
       sv: {
         navAbout: "Om oss",
@@ -1137,7 +1085,6 @@
         heroBtnExperts: "Möt våra experter",
         whoWeAreHeadline: "Vilka Vi Är",
         whoWeAreParagraph: "Vi är ett AI- och datainnovationsföretag i Finland, fokuserat på artificiell intelligens, maskininlärning och datadrivna lösningar. Vårt uppdrag är att hjälpa företag, städer och institutioner att utnyttja data och AI för smartare beslutsfattande, effektivitetsförbättringar och hållbar tillväxt.",
-        coreServicesHeadline: "Våra Kärntjänster",
         // ... more Swedish translations needed
       }
     };
@@ -1146,26 +1093,28 @@
       document.querySelectorAll('[data-translate-key]').forEach(el => {
         const key = el.getAttribute('data-translate-key');
         if (translations[lang] && translations[lang][key]) {
-          // If it's a typing effect element, we need to reset it
           if (el.classList.contains('typing-effect')) {
             el.classList.remove('is-typing');
-            el.textContent = translations[lang][key];
-            // Force reflow to restart animation
-            void el.offsetWidth;
-            el.classList.add('is-typing');
+            // Ensure the element is empty before adding new text
+            el.innerHTML = ''; 
+            setTimeout(() => {
+              el.innerHTML = translations[lang][key];
+              // Update char-count for the animation
+              el.style.setProperty('--char-count', translations[lang][key].length);
+              // Force reflow to restart animation
+              void el.offsetWidth;
+              el.classList.add('is-typing');
+            }, 10);
           } else {
             el.innerHTML = translations[lang][key];
           }
         }
       });
-      // Close the dropdown after selection
       langSwitcher.classList.remove('active');
       langBtn.setAttribute('aria-expanded', 'false');
-      // Update the lang attribute of the html tag for accessibility
       document.documentElement.lang = lang;
     }
 
-    // JAVASCRIPT FOR SCROLL-TRIGGERED TYPING ANIMATION
     document.addEventListener("DOMContentLoaded", function() {
       const typingElements = document.querySelectorAll(".typing-effect");
 
