@@ -47,9 +47,8 @@
       box-sizing: border-box
     }
 
-    html,
-    body {
-      height: 100%
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -442,7 +441,7 @@
       stroke: #ffffff;
       transform: translateY(-2px);
     }
-
+    
     .footer-links {
       margin-top: 2rem;
       padding-top: 1.5rem;
@@ -512,6 +511,10 @@
       background: var(--light);
       color: var(--brand);
     }
+    .lang-dropdown a::after {
+        display: none; /* remove hover underline from dropdown links */
+    }
+
 
     .muted {
       color: var(--muted)
@@ -622,20 +625,20 @@
         <span class="icon-bar"></span>
       </button>
       <div class="navlinks">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#pilot">Pilot</a>
-        <a href="#contact">Contact</a>
+        <a href="#about" data-translate-key="navAbout">About</a>
+        <a href="#services" data-translate-key="navServices">Services</a>
+        <a href="#process" data-translate-key="navProcess">Process</a>
+        <a href="#pilot" data-translate-key="navPilot">Pilot</a>
+        <a href="#contact" data-translate-key="navContact">Contact</a>
         
         <div class="lang-switcher">
           <button class="lang-btn" aria-label="Change language" aria-haspopup="true" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
           </button>
           <div class="lang-dropdown" role="menu">
-            <a href="#" role="menuitem" lang="en">English</a>
-            <a href="#" role="menuitem" lang="fi">Suomi</a>
-            <a href="#" role="menuitem" lang="sv">Svenska</a>
+            <a href="javascript:void(0)" onclick="changeLanguage('en')" role="menuitem" lang="en">English</a>
+            <a href="javascript:void(0)" onclick="changeLanguage('fi')" role="menuitem" lang="fi">Suomi</a>
+            <a href="javascript:void(0)" onclick="changeLanguage('sv')" role="menuitem" lang="sv">Svenska</a>
           </div>
         </div>
       </div>
@@ -646,11 +649,11 @@
     <div class="container">
       <div class="hero">
         <div>
-          <h1>Turning Data Into Intelligence.<br>Driving AI Into Action.</h1>
-          <p class="font-special">Our experts help businesses, cities, and communities harness data, build models, and deploy safe, GDPR-aligned AI with measurable ROI.</p>
+          <h1 data-translate-key="heroHeadline">Turning Data Into Intelligence.<br>Driving AI Into Action.</h1>
+          <p class="font-special" data-translate-key="heroParagraph">Our experts help businesses, cities, and communities harness data, build models, and deploy safe, GDPR-aligned AI with measurable ROI.</p>
           <div class="cta">
-            <a class="btn btn--ghost" href="#pilot">Start a Pilot Project</a>
-            <a class="btn btn--ghost" href="#team">Meet Our Experts</a>
+            <a class="btn btn--ghost" href="#pilot" data-translate-key="heroBtnPilot">Start a Pilot Project</a>
+            <a class="btn btn--ghost" href="#team" data-translate-key="heroBtnExperts">Meet Our Experts</a>
           </div>
         </div>
       </div>
@@ -661,44 +664,44 @@
     <section id="about">
         <div class="container" style="text-align: center; max-width: 800px;">
             <h2 class="section-headline">
-              <span class="typing-effect" style="--char-count: 11;">Who We Are</span>
+              <span class="typing-effect" style="--char-count: 11;" data-translate-key="whoWeAreHeadline">Who We Are</span>
             </h2>
-            <p class="muted font-special" style="font-size: 1.125rem; text-align: justify;">We are an AI and Data Innovation Company in Finland, focused on Artificial Intelligence, Machine Learning, and Data-Driven Solutions. Our mission is to help businesses, cities, and institutions harness data and AI for smarter decision-making, efficiency improvements, and sustainable growth.</p>
+            <p class="muted font-special" style="font-size: 1.125rem; text-align: justify;" data-translate-key="whoWeAreParagraph">We are an AI and Data Innovation Company in Finland, focused on Artificial Intelligence, Machine Learning, and Data-Driven Solutions. Our mission is to help businesses, cities, and institutions harness data and AI for smarter decision-making, efficiency improvements, and sustainable growth.</p>
         </div>
     </section>
 
     <section id="services" class="section--alt">
         <div class="container">
             <h2 class="section-headline">
-              <span class="typing-effect" style="--char-count: 18;">Our Core Services</span>
+              <span class="typing-effect" style="--char-count: 18;" data-translate-key="coreServicesHeadline">Our Core Services</span>
             </h2>
-            <p class="muted font-special" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2.5rem;">We turn your data into impact — faster, smarter, and scalable.</p>
+            <p class="muted font-special" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2.5rem;" data-translate-key="coreServicesSubhead">We turn your data into impact — faster, smarter, and scalable.</p>
             
             <div style="max-width: 700px; margin-inline: auto; display: grid; gap: 1.5rem; margin-bottom: 2rem;">
                 <article class="card">
-                    <h3>💡 AI & Data Strategy</h3>
-                    <p style="text-align: justify; margin: 0;">Make AI work for your business. We design practical AI roadmaps — from idea discovery to ROI modeling — so you can move from insights to real outcomes with confidence.</p>
+                    <h3 data-translate-key="service1Title">💡 AI & Data Strategy</h3>
+                    <p style="text-align: justify; margin: 0;" data-translate-key="service1Desc">Make AI work for your business. We design practical AI roadmaps — from idea discovery to ROI modeling — so you can move from insights to real outcomes with confidence.</p>
                 </article>
                 <article class="card">
-                    <h3>🤖 ML Engineering</h3>
-                    <p style="text-align: justify; margin: 0;">From data to intelligent systems. We build predictive and generative AI — including NLP, computer vision, and time-series models — powered by modern MLOps for reliability and speed.</p>
+                    <h3 data-translate-key="service2Title">🤖 ML Engineering</h3>
+                    <p style="text-align: justify; margin: 0;" data-translate-key="service2Desc">From data to intelligent systems. We build predictive and generative AI — including NLP, computer vision, and time-series models — powered by modern MLOps for reliability and speed.</p>
                 </article>
                 <article class="card">
-                    <h3>🌍 Smart Insights</h3>
-                    <p style="text-align: justify; margin: 0;">Empowering cities and enterprises. We create analytics solutions for smart cities, energy, and healthcare — helping you enhance sustainability, performance, and citizen experiences.</p>
+                    <h3 data-translate-key="service3Title">🌍 Smart Insights</h3>
+                    <p style="text-align: justify; margin: 0;" data-translate-key="service3Desc">Empowering cities and enterprises. We create analytics solutions for smart cities, energy, and healthcare — helping you enhance sustainability, performance, and citizen experiences.</p>
                 </article>
             </div>
             
-            <p class="font-special" style="text-align: center; max-width: 80ch; margin-inline:auto; font-weight: 500;">✨ Every project we take is built for clarity, agility, and measurable value — because innovation should deliver results, not just buzzwords.</p>
+            <p class="font-special" style="text-align: center; max-width: 80ch; margin-inline:auto; font-weight: 500;" data-translate-key="coreServicesTagline">✨ Every project we take is built for clarity, agility, and measurable value — because innovation should deliver results, not just buzzwords.</p>
         </div>
     </section>
 
     <section id="why">
         <div class="container">
             <h2 class="section-headline">
-              <span class="typing-effect" style="--char-count: 20;">Why Partner With Us</span>
+              <span class="typing-effect" style="--char-count: 20;" data-translate-key="whyPartnerHeadline">Why Partner With Us</span>
             </h2>
-            <p class="muted font-special" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;">We're more than consultants; we are your innovation partners.</p>
+            <p class="muted font-special" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;" data-translate-key="whyPartnerSubhead">We're more than consultants; we are your innovation partners.</p>
             <div class="grid" style="grid-template-columns: repeat(4, 1fr);">
                 <article class="card">
                     <div class="icon">🧠</div>
@@ -735,7 +738,7 @@
     <section id="process" class="section--alt">
         <div class="container">
             <h2 class="section-headline">
-              <span class="typing-effect" style="--char-count: 19;">Our 4-Step Process</span>
+              <span class="typing-effect" style="--char-count: 19;" data-translate-key="processHeadline">Our 4-Step Process</span>
             </h2>
             <div class="grid" style="margin-top:2rem; grid-template-columns: repeat(4, 1fr);">
                 <article class="card">
@@ -776,34 +779,34 @@
     <section id="pilot">
         <div class="container">
             <h2 class="section-headline">
-              <span class="typing-effect" style="--char-count: 33;">Start a Pilot Project (4–8 Weeks)</span>
+              <span class="typing-effect" style="--char-count: 33;" data-translate-key="pilotHeadline">Start a Pilot Project (4–8 Weeks)</span>
             </h2>
-            <p class="muted font-special" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;">Choose a high-impact use case (e.g., churn prediction, demand forecasting, anomaly detection). We'll deliver a working model and a clear roadmap for production.</p>
+            <p class="muted font-special" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;" data-translate-key="pilotSubhead">Choose a high-impact use case (e.g., churn prediction, demand forecasting, anomaly detection). We'll deliver a working model and a clear roadmap for production.</p>
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
                 <article class="card">
-                    <div class="kicker">What We Need From You</div>
+                    <div class="kicker" data-translate-key="pilotNeedsTitle">What We Need From You</div>
                     <ul class="list">
-                        <li>Access to the relevant sample dataset</li>
-                        <li>Stakeholder time for feedback (2–4 hours/week)</li>
-                        <li>Clear definition of the business problem</li>
-                        <li>Collaboration on security & privacy reviews</li>
+                        <li data-translate-key="pilotNeed1">Access to the relevant sample dataset</li>
+                        <li data-translate-key="pilotNeed2">Stakeholder time for feedback (2–4 hours/week)</li>
+                        <li data-translate-key="pilotNeed3">Clear definition of the business problem</li>
+                        <li data-translate-key="pilotNeed4">Collaboration on security & privacy reviews</li>
                     </ul>
                 </article>
                 <article class="card">
-                    <div class="kicker">Key Deliverables</div>
+                    <div class="kicker" data-translate-key="pilotDeliverablesTitle">Key Deliverables</div>
                     <ul class="list">
-                        <li>A working, deployed model or interactive dashboard</li>
-                        <li>Detailed Impact/ROI analysis report</li>
-                        <li>Production roadmap and risk assessment</li>
-                        <li>Complete handover documentation & team training</li>
+                        <li data-translate-key="pilotDeliverable1">A working, deployed model or interactive dashboard</li>
+                        <li data-translate-key="pilotDeliverable2">Detailed Impact/ROI analysis report</li>
+                        <li data-translate-key="pilotDeliverable3">Production roadmap and risk assessment</li>
+                        <li data-translate-key="pilotDeliverable4">Complete handover documentation & team training</li>
                     </ul>
                 </article>
             </div>
 
             <div style="margin-top: 3rem; padding-top: clamp(3rem, 6vw, 4rem); border-top: 1px solid var(--line);">
                 <div class="container" style="max-width: 900px;">
-                    <h3 style="text-align: center; font-size: 1.75rem;">Pilot Project in Action: Customer Churn Prediction</h3>
-                    <p class="muted font-special" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;">Here’s a tangible example of how a short pilot can deliver immense value.</p>
+                    <h3 style="text-align: center; font-size: 1.75rem;" data-translate-key="churnTitle">Pilot Project in Action: Customer Churn Prediction</h3>
+                    <p class="muted font-special" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;" data-translate-key="churnSubhead">Here’s a tangible example of how a short pilot can deliver immense value.</p>
                     <div class="grid" style="grid-template-columns: 1fr 1fr; align-items: center; gap: 2rem; margin-top: 2rem;">
                         <article class="card" style="grid-column: 1 / -1; @media (min-width: 768px) { grid-column: auto; }">
                             <div>
@@ -830,11 +833,11 @@
     <section id="more-examples" class="section--alt"> 
 <div class="container" style="text-align: center;">
             <h2 class="section-headline">
-              <span class="typing-effect" style="--char-count: 26;">Explore Our Pilot Projects</span>
+              <span class="typing-effect" style="--char-count: 26;" data-translate-key="moreExamplesHeadline">Explore Our Pilot Projects</span>
             </h2>
-            <p class="muted font-special">See more real-world examples of how we turn data into measurable business outcomes.</p> 
+            <p class="muted font-special" data-translate-key="moreExamplesSubhead">See more real-world examples of how we turn data into measurable business outcomes.</p> 
 <div class="cta">
-                <a href="#" class="btn btn--creative">Find More Example Pilot</a>
+                <a href="#" class="btn btn--creative" data-translate-key="moreExamplesBtn">Find More Example Pilot</a>
             </div>
         </div>
     </section>
@@ -842,21 +845,21 @@
     <section id="team">
         <div class="container" style="text-align: center; max-width: 800px;">
             <h2 class="section-headline"> 
-<span class="typing-effect" style="--char-count: 11;">Our Experts</span>
+<span class="typing-effect" style="--char-count: 11;" data-translate-key="expertsHeadline">Our Experts</span>
             </h2>
-            <p class="font-special" style="font-size: 1.25rem; color: var(--ink); font-weight: 600; margin-top: 2rem; margin-bottom: .5rem;">The Minds Behind Intelligent Transformation</p>
-            <p class="muted" style="line-height: 1.7;">At MEHErix, our experts bring together cutting-edge knowledge in Artificial Intelligence, Data Science, Engineering, and Strategy. We work as one unified team — combining innovation, precision, and ethical responsibility to turn insight into impact.</p>
+            <p class="font-special" style="font-size: 1.25rem; color: var(--ink); font-weight: 600; margin-top: 2rem; margin-bottom: .5rem;" data-translate-key="expertsSubhead">The Minds Behind Intelligent Transformation</p>
+            <p class="muted" style="line-height: 1.7;" data-translate-key="expertsParagraph">At MEHErix, our experts bring together cutting-edge knowledge in Artificial Intelligence, Data Science, Engineering, and Strategy. We work as one unified team — combining innovation, precision, and ethical responsibility to turn insight into impact.</p>
         </div>
     </section>
   </main>
 
   <footer class="footer-cta" id="contact">
     <div class="container">
-        <h2>Ready to Turn Data into Your Competitive Advantage?</h2>
-        <p class="muted">Let's talk about how a pilot project can deliver measurable ROI for your organization.</p>
+        <h2 data-translate-key="footerHeadline">Ready to Turn Data into Your Competitive Advantage?</h2>
+        <p class="muted" data-translate-key="footerSubhead">Let's talk about how a pilot project can deliver measurable ROI for your organization.</p>
         <div class="cta" style="justify-content:center;">
-            <a class="btn btn--ghost" href="mailto:info@meherix.fi?subject=Pilot%20Project%20Inquiry">Request a Free Consultation</a>
-            <a class="btn btn--ghost" href="#services">Explore Our Services</a>
+            <a class="btn btn--ghost" href="mailto:info@meherix.fi?subject=Pilot%20Project%20Inquiry" data-translate-key="footerBtnConsult">Request a Free Consultation</a>
+            <a class="btn btn--ghost" href="#services" data-translate-key="footerBtnServices">Explore Our Services</a>
         </div>
 
         <div class="social-links">
@@ -887,10 +890,10 @@
         </div>
         
         <div class="footer-links">
-          <a href="#">Privacy notice</a>
-          <a href="#">Terms of use</a>
-          <a href="#">Cookies</a>
-          <a href="#">Career</a>
+          <a href="#" data-translate-key="footerLinkPrivacy">Privacy notice</a>
+          <a href="#" data-translate-key="footerLinkTerms">Terms of use</a>
+          <a href="#" data-translate-key="footerLinkCookies">Cookies</a>
+          <a href="#" data-translate-key="footerLinkCareer">Career</a>
         </div>
 
         <p class="muted" style="margin-top:2rem;font-size:.9rem">© <span id="y"></span> MEHErix Oy all rights reserved</p>
@@ -1042,7 +1045,127 @@
       detectRetina: true
     });
 
-    // ====== JAVASCRIPT FOR TYPING ANIMATION ======
+    // ====== TRANSLATION SCRIPT ======
+    const translations = {
+      en: {
+        navAbout: "About",
+        navServices: "Services",
+        navProcess: "Process",
+        navPilot: "Pilot",
+        navContact: "Contact",
+        heroHeadline: "Turning Data Into Intelligence.<br>Driving AI Into Action.",
+        heroParagraph: "Our experts help businesses, cities, and communities harness data, build models, and deploy safe, GDPR-aligned AI with measurable ROI.",
+        heroBtnPilot: "Start a Pilot Project",
+        heroBtnExperts: "Meet Our Experts",
+        whoWeAreHeadline: "Who We Are",
+        whoWeAreParagraph: "We are an AI and Data Innovation Company in Finland, focused on Artificial Intelligence, Machine Learning, and Data-Driven Solutions. Our mission is to help businesses, cities, and institutions harness data and AI for smarter decision-making, efficiency improvements, and sustainable growth.",
+        coreServicesHeadline: "Our Core Services",
+        coreServicesSubhead: "We turn your data into impact — faster, smarter, and scalable.",
+        coreServicesTagline: "✨ Every project we take is built for clarity, agility, and measurable value — because innovation should deliver results, not just buzzwords.",
+        whyPartnerHeadline: "Why Partner With Us",
+        whyPartnerSubhead: "We're more than consultants; we are your innovation partners.",
+        processHeadline: "Our 4-Step Process",
+        pilotHeadline: "Start a Pilot Project (4–8 Weeks)",
+        pilotSubhead: "Choose a high-impact use case (e.g., churn prediction, demand forecasting, anomaly detection). We'll deliver a working model and a clear roadmap for production.",
+        pilotNeedsTitle: "What We Need From You",
+        pilotNeed1: "Access to the relevant sample dataset",
+        pilotDeliverablesTitle: "Key Deliverables",
+        churnTitle: "Pilot Project in Action: Customer Churn Prediction",
+        churnSubhead: "Here’s a tangible example of how a short pilot can deliver immense value.",
+        moreExamplesHeadline: "Explore Our Pilot Projects",
+        moreExamplesSubhead: "See more real-world examples of how we turn data into measurable business outcomes.",
+        moreExamplesBtn: "Find More Example Pilot",
+        expertsHeadline: "Our Experts",
+        expertsSubhead: "The Minds Behind Intelligent Transformation",
+        footerHeadline: "Ready to Turn Data into Your Competitive Advantage?",
+        footerSubhead: "Let's talk about how a pilot project can deliver measurable ROI for your organization.",
+        footerBtnConsult: "Request a Free Consultation",
+        footerBtnServices: "Explore Our Services",
+        footerLinkPrivacy: "Privacy notice",
+        footerLinkTerms: "Terms of use",
+        footerLinkCookies: "Cookies",
+        footerLinkCareer: "Career",
+      },
+      fi: {
+        navAbout: "Meistä",
+        navServices: "Palvelut",
+        navProcess: "Prosessi",
+        navPilot: "Pilotti",
+        navContact: "Ota yhteyttä",
+        heroHeadline: "Data älykkyydeksi.<br>Tekoäly toimintaan.",
+        heroParagraph: "Asiantuntijamme auttavat yrityksiä, kaupunkeja ja yhteisöjä hyödyntämään dataa, rakentamaan malleja ja ottamaan käyttöön turvallisia, GDPR:n mukaisia tekoälyratkaisuja, joilla on mitattava ROI.",
+        heroBtnPilot: "Aloita pilottiprojekti",
+        heroBtnExperts: "Tapaa asiantuntijamme",
+        whoWeAreHeadline: "Keitä Olemme",
+        whoWeAreParagraph: "Olemme suomalainen tekoäly- ja data-innovaatioyritys, joka keskittyy tekoälyyn, koneoppimiseen ja datalähtöisiin ratkaisuihin. Missiomme on auttaa yrityksiä, kaupunkeja ja instituutioita hyödyntämään dataa ja tekoälyä älykkäämpään päätöksentekoon, tehokkuuden parantamiseen ja kestävään kasvuun.",
+        coreServicesHeadline: "Ydinpalvelumme",
+        coreServicesSubhead: "Muutamme datasi vaikuttavuudeksi – nopeammin, älykkäämmin ja skaalautuvammin.",
+        coreServicesTagline: "✨ Jokainen projektimme rakennetaan selkeydelle, ketteryydelle ja mitattavalle arvolle – koska innovaation tulee tuottaa tuloksia, ei vain muotisanoja.",
+        whyPartnerHeadline: "Miksi yhteistyöhön?",
+        whyPartnerSubhead: "Olemme enemmän kuin konsultteja; olemme innovaatiokumppaneitasi.",
+        processHeadline: "4-vaiheinen prosessimme",
+        pilotHeadline: "Aloita pilottiprojekti (4–8 viikkoa)",
+        pilotSubhead: "Valitse korkean vaikuttavuuden käyttötapaus (esim. asiakaspoistuman ennustaminen, kysynnän ennustaminen, poikkeamien havaitseminen). Toimitamme toimivan mallin ja selkeän tiekartan tuotantoon.",
+        pilotNeedsTitle: "Mitä tarvitsemme teiltä",
+        pilotNeed1: "Pääsy relevanttiin näyteaineistoon",
+        pilotDeliverablesTitle: "Keskeiset toimitukset",
+        churnTitle: "Pilottiprojekti: Asiakaspoistuman ennustaminen",
+        churnSubhead: "Tässä on konkreettinen esimerkki siitä, kuinka lyhyt pilotti voi tuottaa valtavaa arvoa.",
+        moreExamplesHeadline: "Tutustu pilottiprojekteihimme",
+        moreExamplesSubhead: "Katso lisää esimerkkejä siitä, kuinka muutamme datan mitattaviksi liiketoimintatuloksiksi.",
+        moreExamplesBtn: "Löydä lisää esimerkkipilotteja",
+        expertsHeadline: "Asiantuntijamme",
+        expertsSubhead: "Älykkään muutoksen takana olevat mielet",
+        footerHeadline: "Valmis muuttamaan datan kilpailueduksi?",
+        footerSubhead: "Keskustellaan, miten pilottiprojekti voi tuottaa mitattavan ROI:n organisaatiollesi.",
+        footerBtnConsult: "Pyydä ilmainen konsultaatio",
+        footerBtnServices: "Tutustu palveluihimme",
+        footerLinkPrivacy: "Tietosuojaseloste",
+        footerLinkTerms: "Käyttöehdot",
+        footerLinkCookies: "Evästeet",
+        footerLinkCareer: "Ura",
+      },
+      sv: {
+        navAbout: "Om oss",
+        navServices: "Tjänster",
+        navProcess: "Process",
+        navPilot: "Pilot",
+        navContact: "Kontakt",
+        heroHeadline: "Förvandla Data till Intelligens.<br>Driva AI till Handling.",
+        heroParagraph: "Våra experter hjälper företag, städer och samhällen att utnyttja data, bygga modeller och implementera säker, GDPR-kompatibel AI med mätbar ROI.",
+        heroBtnPilot: "Starta ett pilotprojekt",
+        heroBtnExperts: "Möt våra experter",
+        whoWeAreHeadline: "Vilka Vi Är",
+        whoWeAreParagraph: "Vi är ett AI- och datainnovationsföretag i Finland, fokuserat på artificiell intelligens, maskininlärning och datadrivna lösningar. Vårt uppdrag är att hjälpa företag, städer och institutioner att utnyttja data och AI för smartare beslutsfattande, effektivitetsförbättringar och hållbar tillväxt.",
+        coreServicesHeadline: "Våra Kärntjänster",
+        // ... more Swedish translations needed
+      }
+    };
+    
+    function changeLanguage(lang) {
+      document.querySelectorAll('[data-translate-key]').forEach(el => {
+        const key = el.getAttribute('data-translate-key');
+        if (translations[lang] && translations[lang][key]) {
+          // If it's a typing effect element, we need to reset it
+          if (el.classList.contains('typing-effect')) {
+            el.classList.remove('is-typing');
+            el.textContent = translations[lang][key];
+            // Force reflow to restart animation
+            void el.offsetWidth;
+            el.classList.add('is-typing');
+          } else {
+            el.innerHTML = translations[lang][key];
+          }
+        }
+      });
+      // Close the dropdown after selection
+      langSwitcher.classList.remove('active');
+      langBtn.setAttribute('aria-expanded', 'false');
+      // Update the lang attribute of the html tag for accessibility
+      document.documentElement.lang = lang;
+    }
+
+    // JAVASCRIPT FOR SCROLL-TRIGGERED TYPING ANIMATION
     document.addEventListener("DOMContentLoaded", function() {
       const typingElements = document.querySelectorAll(".typing-effect");
 
