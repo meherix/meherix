@@ -82,7 +82,6 @@
       margin: .25rem 0 1rem
     }
     
-    /* New font class */
     .font-special {
       font-family: 'Poppins', sans-serif;
       font-weight: 300;
@@ -712,21 +711,21 @@
             <p class="muted font-special" style="text-align: center; max-width: 65ch; margin-inline:auto; margin-bottom: 2rem;">Choose a high-impact use case (e.g., churn prediction, demand forecasting, anomaly detection). We'll deliver a working model and a clear roadmap for production.</p>
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
                 <article class="card">
+                    <div class="kicker">What We Need From You</div>
+                    <ul class="list">
+                        <li>Access to the relevant sample dataset</li>
+                        <li>Stakeholder time for feedback (2–4 hours/week)</li>
+                        <li>Clear definition of the business problem</li>
+                        <li>Collaboration on security & privacy reviews</li>
+                    </ul>
+                </article>
+                <article class="card">
                     <div class="kicker">Key Deliverables</div>
                     <ul class="list">
                         <li>A working, deployed model or interactive notebook</li>
                         <li>Detailed Impact/ROI analysis report</li>
                         <li>Production roadmap and risk assessment</li>
                         <li>Complete handover documentation & team training</li>
-                    </ul>
-                </article>
-                <article class="card">
-                    <div class="kicker">What We Need From You</div>
-                    <ul class="list">
-                        <li>Access to a clean, relevant sample dataset</li>
-                        <li>Stakeholder time for feedback (2–4 hours/week)</li>
-                        <li>Clear definition of the business problem</li>
-                        <li>Collaboration on security & privacy reviews</li>
                     </ul>
                 </article>
             </div>
@@ -860,7 +859,7 @@
             legend: {
               position: 'bottom',
               labels: {
-                color: '#333'
+                color: '#333' // Set legend text color to a dark color for white background
               }
             },
             tooltip: {
