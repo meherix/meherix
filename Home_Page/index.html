@@ -7,7 +7,9 @@
 
   <meta name="description" content="MEHErix helps businesses and cities turn data into deployable AI—practical, ethical, and GDPR-aligned. Start a pilot with our Data Scientists & ML Engineers." />
   <meta name="theme-color" content="#0077b6" />
-  <link rel="icon" href="logo2.png" /> <meta property="og:title" content="MEHErix — Insight Shines Through" />
+  <link rel="icon" href="logo2.png" />
+
+  <meta property="og:title" content="MEHErix — Insight Shines Through" />
   <meta property="og:description" content="Turning data into intelligence. Driving AI into action. Start a pilot with MEHErix." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/og-cover.png" />
@@ -139,15 +141,26 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: .6rem;
+      gap: 1rem;
       color: var(--ink);
       font-weight: 700;
       letter-spacing: .3px
     }
-
-    /* Style for the new logo image */
-    .brand img {
-      height: 40px;
+    
+    /* ====== NEW LOGO STYLE ====== */
+    .brand__logo {
+      width: 45px;
+      height: 45px;
+      border-radius: 12px;
+      background-image: url('logo2.png');
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 6px 20px rgba(0, 119, 182, 0.3);
+      transition: all 0.3s ease;
+    }
+    .brand:hover .brand__logo {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 119, 182, 0.4);
     }
 
     .navlinks {
@@ -587,7 +600,7 @@
   <nav class="nav" role="navigation" aria-label="Primary">
     <div class="container nav__inner">
       <a href="#" class="brand" aria-label="MEHErix Home">
-        <img src="logo2.png" alt="MEHErix Logo">
+        <div class="brand__logo"></div>
         <div>
           <div style="font-size:1.1rem;">MEHErix</div>
           <div class="muted" style="font-size:.8rem;font-weight:600;">Insight Shines Through</div>
