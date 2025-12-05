@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>aPOD — Student Intelligent Dashboard</title>
+
+  <meta name="description" content="aPOD: A Picture Of the Day — Learn English First & Second Paper with daily visual prompts, smart practice, and an intelligent progress dashboard." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="/apod-logo.png" />
+
+  <meta property="og:title" content="aPOD — Student Intelligent Dashboard" />
+  <meta property="og:description" content="Bangladesh NCTB-aligned English learning: Picture of the Day, First & Second Paper modules, quizzes, and insights." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/apod-cover.png" />
+  <meta property="og:url" content="https://your-domain.example/apod.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="aPOD — Student Intelligent Dashboard" />
+  <meta name="twitter:description" content="Smart daily English learning with an intelligent dashboard." />
+  <meta name="twitter:image" content="/apod-cover.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600;800&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#ffffff; --ink:#0b2545; --muted:#4f6b87; --brand:#0ea5e9; --brand-ink:#ffffff; --line:#e6edf3;
+      --card:#ffffff; --radius:16px; --shadow:0 10px 30px rgba(11,37,69,.08); --maxw:1160px;
+      --accent:#7A3CF6; --ok:#16a34a; --warn:#eab308; --danger:#ef4444;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,'Noto Sans Bengali',sans-serif;background:linear-gradient(180deg,#f8fbff 0%, #fff 40%);color:var(--muted)}
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3{color:var(--ink);margin:.2rem 0 .6rem;line-height:1.2}
+    h1{font-size:clamp(1.9rem,2.8vw+1rem,3rem)}
+    h2{font-size:clamp(1.4rem,1.6vw+1rem,2rem)}
+    p{margin:.4rem 0 1rem}
+    .container{width:min(100%,var(--maxw));margin-inline:auto;padding-inline:clamp(1rem,3vw,2rem)}
+
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.85);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid var(--line)}
+    .nav__inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 0}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:800;color:var(--ink)}
+    .brand__logo{width:40px;height:40px;border-radius:12px;background:url('/apod-logo.png') center/cover no-repeat;box-shadow:0 6px 18px rgba(14,165,233,.35)}
+    .navlinks{display:flex;align-items:center;gap:1rem}
+    .pill{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line);padding:.5rem .8rem;border-radius:999px;background:#fff}
+
+    /* HERO */
+    header.hero{padding:clamp(2rem,6vw,4rem) 0}
+    .hero__grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(1rem,3vw,2rem);align-items:center}
+    .hero__sub{font-size:1.05rem;color:var(--muted);max-width:58ch}
+    .cta{display:flex;gap:.8rem;flex-wrap:wrap}
+    .btn{padding:.9rem 1.1rem;border-radius:12px;border:1px solid transparent;font-weight:700}
+    .btn--primary{background:var(--brand);color:var(--brand-ink)}
+    .btn--ghost{background:#fff;border-color:var(--line);color:var(--brand)}
+
+    /* CARDS / GRID */
+    .grid{display:grid;gap:clamp(1rem,2vw,1.5rem)}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    @media (max-width:980px){.hero__grid{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr 1fr}.grid-4{grid-template-columns:1fr 1fr}.grid-2{grid-template-columns:1fr}}
+    @media (max-width:640px){.grid-3,.grid-4{grid-template-columns:1fr}}
+
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.2rem}
+    .card h3{margin:.2rem 0 .4rem}
+    .kicker{letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:800;font-size:.8rem;margin-bottom:.2rem}
+
+    /* DAILY PICTURE */
+    .pod{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1rem,3vw,1.6rem);align-items:start}
+    @media (max-width:980px){.pod{grid-template-columns:1fr}}
+    .pod__img{overflow:hidden;border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow)}
+    .pod__img img{display:block;width:100%;height:auto}
+    .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin:.4rem 0}
+    .tag{padding:.35rem .6rem;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:.85rem}
+
+    /* MODULE TABS */
+    .tabs{display:flex;gap:.6rem;flex-wrap:wrap;margin:.6rem 0 1rem}
+    .tab{padding:.6rem .9rem;border-radius:12px;border:1px solid var(--line);cursor:pointer;background:#fff}
+    .tab.active{background:linear-gradient(135deg,var(--brand),#3b82f6);color:#fff;border-color:transparent}
+
+    /* LESSON LIST */
+    .lesson{display:flex;align-items:flex-start;gap:.8rem;padding:.8rem;border-radius:12px;border:1px solid var(--line)}
+    .lesson .badge{min-width:32px;height:32px;display:grid;place-items:center;border-radius:8px;background:rgba(14,165,233,.12);color:#0369a1;font-weight:800}
+    .lesson .meta{font-size:.9rem;color:var(--muted)}
+
+    /* PROGRESS */
+    .progress{height:10px;border-radius:999px;background:#eef5fb;overflow:hidden;border:1px solid var(--line)}
+    .progress > span{display:block;height:100%;background:linear-gradient(90deg,var(--brand),#22c55e)}
+
+    /* DASHBOARD */
+    .stat{display:flex;align-items:center;justify-content:space-between}
+    .big{font-size:1.7rem;font-weight:800;color:var(--ink)}
+
+    /* FOOTER */
+    footer{padding:2.5rem 0;border-top:1px solid var(--line);margin-top:2rem;color:var(--muted)}
+
+    /* LANG SWITCH */
+    .lang{display:flex;gap:.5rem;align-items:center}
+    .lang button{border:1px solid var(--line);background:#fff;padding:.45rem .7rem;border-radius:10px;cursor:pointer}
+    .lang button.active{background:var(--brand);color:#fff;border-color:transparent}
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#" aria-label="aPOD Home">
+        <div class="brand__logo"></div>
+        <span>aPOD</span>
+      </a>
+      <div class="navlinks">
+        <span class="pill">📸 Picture of the Day</span>
+        <span class="pill">📚 First & Second Paper</span>
+        <span class="pill">📊 Dashboard</span>
+        <div class="lang">
+          <button id="bnBtn" class="active">বাংলা</button>
+          <button id="enBtn">English</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container hero__grid">
+      <div>
+        <h1>একটি ছবি, একদিন—বুদ্ধিমত্তার সাথে ইংরেজি শেখা</h1>
+        <p class="hero__sub">
+          aPOD (A Picture Of the Day) — প্রতিদিনের একটি ছবিকে কেন্দ্র করে শব্দভান্ডার, ব্যাকরণ ও রাইটিং প্র্যাকটিস।
+          NCTB ইংরেজি First & Second Paper—সব এক জায়গায়। শেষে আপনার নিজস্ব ইন্টেলিজেন্ট ড্যাশবোর্ড।
+        </p>
+        <div class="cta">
+          <a class="btn btn--primary" href="#pod">Start Today’s Picture</a>
+          <a class="btn btn--ghost" href="#dashboard">View Dashboard</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="kicker">Today’s Snapshot</div>
+        <h3 id="todayTitle">Rainy School Morning</h3>
+        <div class="stat"><span>Target Time</span><span class="big" id="targetTime">15 min</span></div>
+        <div class="stat"><span>Streak</span><span class="big" id="streak">0🔥</span></div>
+        <div class="progress" aria-label="Daily goal progress"><span id="dailyProgress" style="width:35%"></span></div>
+        <p class="meta">Complete the 3 tasks to hit today’s goal.</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- PICTURE OF THE DAY -->
+    <section id="pod" class="container">
+      <div class="kicker">Picture of the Day</div>
+      <h2>Look • Think • Write</h2>
+      <div class="pod card">
+        <div class="pod__img">
+          <img id="podImg" src="/images/pod-rainy-school.jpg" alt="Students entering school on a rainy morning" />
+        </div>
+        <div>
+          <div class="tags" id="tags"></div>
+          <div class="tabs">
+            <button class="tab active" data-pane="observe">Observe</button>
+            <button class="tab" data-pane="vocab">Vocabulary</button>
+            <button class="tab" data-pane="prompt">Writing Prompt</button>
+          </div>
+
+          <div id="pane-observe" class="card" style="padding:1rem;">
+            <h3>What do you notice?</h3>
+            <ul id="observeList"></ul>
+          </div>
+
+          <div id="pane-vocab" class="card" style="padding:1rem; display:none;">
+            <h3>Picture Words (EN ⇄ BN)</h3>
+            <div class="grid grid-2" id="vocabList"></div>
+          </div>
+
+          <div id="pane-prompt" class="card" style="padding:1rem; display:none;">
+            <h3>Write 5–7 sentences</h3>
+            <p id="promptText"></p>
+            <textarea id="answer" rows="5" style="width:100%;border:1px solid var(--line);border-radius:12px;padding:.8rem" placeholder="Write here... / এখানে লিখুন..."></textarea>
+            <div class="cta" style="margin-top:.8rem">
+              <button id="saveAnswer" class="btn btn--primary">Save</button>
+              <button id="checkAnswer" class="btn btn--ghost">Quick Checklist</button>
+            </div>
+            <p id="checkResult" class="meta"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULES: FIRST & SECOND PAPER -->
+    <section id="modules" class="container" style="margin-top:2rem">
+      <div class="kicker">Modules</div>
+      <h2>First & Second Paper — Smart Practice</h2>
+      <div class="tabs">
+        <button class="tab active" data-pane="first">First Paper</button>
+        <button class="tab" data-pane="second">Second Paper</button>
+        <button class="tab" data-pane="quiz">Quick Quiz</button>
+      </div>
+
+      <div id="pane-first" class="grid grid-3">
+        <!-- Reading & Writing lessons injected by JS -->
+      </div>
+
+      <div id="pane-second" class="grid grid-3" style="display:none">
+        <!-- Grammar & Translation lessons injected by JS -->
+      </div>
+
+      <div id="pane-quiz" class="card" style="display:none">
+        <h3>10-Question Mixed Quiz</h3>
+        <ol id="quizList"></ol>
+        <div class="cta"><button id="submitQuiz" class="btn btn--primary">Submit</button><button id="resetQuiz" class="btn btn--ghost">Reset</button></div>
+        <p id="quizResult" class="meta"></p>
+      </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="container" style="margin-top:2rem">
+      <div class="kicker">Dashboard</div>
+      <h2>Your Intelligent Progress</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Weekly Time</h3>
+          <canvas id="timeChart" height="160"></canvas>
+        </div>
+        <div class="card">
+          <h3>Skill Mastery</h3>
+          <canvas id="radarChart" height="160"></canvas>
+        </div>
+        <div class="card">
+          <h3>Streak & Goals</h3>
+          <div class="stat"><span>Current Streak</span><span class="big" id="streakBig">0🔥</span></div>
+          <div class="stat"><span>Lessons Done</span><span class="big" id="lessonsDone">0</span></div>
+          <div class="stat"><span>Accuracy (last 7)</span><span class="big" id="acc">—</span></div>
+          <div class="progress" style="margin-top:.6rem"><span id="goalProgress" style="width:0%"></span></div>
+          <p class="meta">Goal: 5 lessons / week</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="grid grid-2">
+        <p>© <span id="year"></span> aPOD — Learn a little every day.</p>
+        <p style="text-align:right">Made for Bangladesh NCTB learners • English First & Second Paper</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script>
+    // ---------- CONTENT MODEL (EASY TO EDIT) ----------
+    const POD = {
+      title: {
+        bn: 'বৃষ্টিস্নাত স্কুল সকাল',
+        en: 'Rainy School Morning'
+      },
+      image: '/images/pod-rainy-school.jpg', // <- replace with your image
+      tags: ['weather','school','routine','umbrella'],
+      observe_bn: ['ছাত্ররা ছাতা নিয়ে স্কুলে ঢুকছে','মাটিতে পানির ছোট ছোট পুকুর','রাস্তায় ট্রাফিক ধীর','আকাশ মেঘলা'],
+      observe_en: ['Students entering school with umbrellas','Small puddles on the ground','Traffic is slow','Sky is cloudy'],
+      vocab: [
+        { en:'umbrella', bn:'ছাতা', hint:'noun' },
+        { en:'puddle', bn:'জলের গর্ত', hint:'noun' },
+        { en:'hurry', bn:'তাড়াহুড়ো', hint:'verb/noun' },
+        { en:'uniform', bn:'ইউনিফর্ম', hint:'noun' },
+        { en:'late', bn:'দেরি', hint:'adj/adv' },
+        { en:'queue', bn:'সারি', hint:'noun' },
+      ],
+      prompt_bn: 'ছবিটি দেখে ৫–৭টি বাক্য লিখুন: আজ সকালে স্কুলে যেতে আপনার কেমন লেগেছিল? বৃষ্টি আপনার পরিকল্পনায় কী পরিবর্তন এনেছে?',
+      prompt_en: 'Write 5–7 sentences: How did the rain change your morning plan on the way to school?'
+    };
+
+    const FIRST_PAPER = {
+      Reading: [
+        { id:'R1', title:'Short Passage: School Routine', minutes:8, level:'Class 7' },
+        { id:'R2', title:'Notice: Sports Day', minutes:7, level:'Class 8' },
+        { id:'R3', title:'Dialogue: Missing Bus', minutes:6, level:'Class 9' }
+      ],
+      Writing: [
+        { id:'W1', title:'Paragraph: A Rainy Day', minutes:10, level:'Class 7' },
+        { id:'W2', title:'Email: Request for Leave', minutes:9, level:'Class 8' },
+        { id:'W3', title:'Story: The Late Morning', minutes:12, level:'Class 9' }
+      ]
+    };
+
+    const SECOND_PAPER = {
+      Grammar: [
+        { id:'G1', title:'Tense Review', minutes:8, level:'All' },
+        { id:'G2', title:'Articles & Prepositions', minutes:9, level:'All' },
+        { id:'G3', title:'Subject–Verb Agreement', minutes:7, level:'All' }
+      ],
+      Translation: [
+        { id:'T1', title:'BN → EN Daily Life', minutes:6, level:'Class 7-8' },
+        { id:'T2', title:'EN → BN Notices', minutes:7, level:'Class 8-9' },
+        { id:'T3', title:'Mixed Sentences', minutes:8, level:'All' }
+      ]
+    };
+
+    const QUIZ = [
+      { q:'Choose the correct form: He ___ to school every day.', a:['go','goes','gone'], key:1 },
+      { q:'বাংলা অর্থ: umbrella', a:['গামছা','ছাতা','টুপি'], key:1 },
+      { q:'Pick the preposition: She is waiting ___ the bus.', a:['on','for','to'], key:1 },
+      { q:'Passive voice of: They play football.', a:['Football is played by them.','They are played football.','Football was played.'], key:0 },
+      { q:'Fill in: He is good ___ English.', a:['at','in','on'], key:0 },
+      { q:'Synonym of hurry', a:['delay','rush','walk'], key:1 },
+      { q:'Article: I saw ___ elephant.', a:['a','an','the'], key:1 },
+      { q:'Choose correct: The news ___ true.', a:['are','were','is'], key:2 },
+      { q:'Translation EN→BN: rainy day', a:['বৃষ্টিস্নাত দিন','ঝড়ো রাত','রৌদ্রোজ্জ্বল সকাল'], key:0 },
+      { q:'Spelling:', a:['accidently','accidentally','accidentaly'], key:1 },
+    ];
+
+    // ---------- STATE ----------
+    const state = {
+      lang:'bn', streak: Number(localStorage.getItem('apod_streak')||0),
+      lessonsDone: Number(localStorage.getItem('apod_done')||0),
+      weeklyMinutes: JSON.parse(localStorage.getItem('apod_minutes')||'[20,15,10,25,5,0,0]'),
+      accuracy7: localStorage.getItem('apod_acc7') || '—'
+    };
+
+    // ---------- HELPERS ----------
+    const el = s=>document.querySelector(s);
+    const els = s=>Array.from(document.querySelectorAll(s));
+    const setHTML = (node, html)=>{ node.innerHTML = html };
+
+    function renderPOD(){
+      el('#todayTitle').textContent = state.lang==='bn'? POD.title.bn : POD.title.en;
+      el('#podImg').src = POD.image;
+      setHTML(el('#tags'), POD.tags.map(t=>`<span class="tag">#${t}</span>`).join(''));
+      const obs = state.lang==='bn'? POD.observe_bn : POD.observe_en;
+      setHTML(el('#observeList'), obs.map(x=>`<li>${x}</li>`).join(''));
+      const vocab = POD.vocab.map(v=>`
+        <div class="lesson">
+          <div class="badge">${v.hint}</div>
+          <div>
+            <div><strong>${state.lang==='bn'? v.bn : v.en}</strong> <span class="meta">${state.lang==='bn'? v.en : v.bn}</span></div>
+            <div class="meta">${state.lang==='bn'?'ধরণ':'Type'}: ${v.hint}</div>
+          </div>
+        </div>`).join('');
+      setHTML(el('#vocabList'), vocab);
+      el('#promptText').textContent = state.lang==='bn'? POD.prompt_bn : POD.prompt_en;
+    }
+
+    function renderLessons(){
+      const makeCard = (item)=>`
+        <article class="card lesson">
+          <div class="badge">${item.minutes}m</div>
+          <div>
+            <h3>${item.title}</h3>
+            <p class="meta">${item.level}</p>
+            <button class="btn btn--ghost" onclick="completeLesson('${item.id}', ${item.minutes})">Mark Done</button>
+          </div>
+        </article>`;
+      setHTML(el('#pane-first'),[
+        ...FIRST_PAPER.Reading.map(makeCard),
+        ...FIRST_PAPER.Writing.map(makeCard)
+      ].join(''));
+      setHTML(el('#pane-second'),[
+        ...SECOND_PAPER.Grammar.map(makeCard),
+        ...SECOND_PAPER.Translation.map(makeCard)
+      ].join(''));
+    }
+
+    function renderHeader(){
+      el('#streak').textContent = state.streak + '🔥';
+      el('#streakBig').textContent = state.streak + '🔥';
+      el('#lessonsDone').textContent = state.lessonsDone;
+      const pct = Math.min(100, Math.round((state.lessonsDone%5)/5*100));
+      el('#goalProgress').style.width = pct + '%';
+      el('#dailyProgress').style.width = Math.min(100, state.lessonsDone*20) + '%';
+      el('#acc').textContent = state.accuracy7;
+      el('#year').textContent = new Date().getFullYear();
+    }
+
+    // ---------- INTERACTIONS ----------
+    els('.tab').forEach(t=>t.addEventListener('click',()=>{
+      const pane = t.dataset.pane;
+      t.parentElement.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      // panes
+      ['observe','vocab','prompt','first','second','quiz'].forEach(id=>{
+        const block = document.querySelector('#pane-'+id);
+        if(block) block.style.display = (id===pane)? 'block' : 'none';
+      });
+    }));
+
+    el('#saveAnswer').addEventListener('click',()=>{
+      const txt = el('#answer').value.trim();
+      if(!txt){ alert('Write something first.'); return; }
+      localStorage.setItem('apod_answer_'+(new Date()).toISOString().slice(0,10), txt);
+      completeLesson('WRITE', 10);
+      el('#checkResult').textContent = state.lang==='bn'? 'সংরক্ষণ হয়েছে ✅' : 'Saved ✅';
+    });
+
+    el('#checkAnswer').addEventListener('click',()=>{
+      const txt = el('#answer').value.trim();
+      const checks = [
+        {k:'length', pass: txt.split(/\s+/).length >= 40, m:'~40+ words'},
+        {k:'comma', pass: /,/.test(txt), m:'uses a comma'},
+        {k:'period', pass: /[.!?]/.test(txt), m:'has sentence ends'},
+      ];
+      const ok = checks.filter(c=>c.pass).length;
+      el('#checkResult').textContent = `${ok}/3 checks passed`;
+    });
+
+    // QUIZ
+    const quizList = el('#quizList');
+    QUIZ.forEach((q,i)=>{
+      const li = document.createElement('li');
+      li.className='card';
+      li.style.marginBottom='.6rem';
+      li.innerHTML = `<p><strong>${q.q}</strong></p>` + q.a.map((opt,idx)=>`<label style="display:block;margin:.25rem 0"><input type="radio" name="q${i}" value="${idx}"> ${opt}</label>`).join('');
+      quizList.appendChild(li);
+    });
+
+    el('#submitQuiz').addEventListener('click',()=>{
+      let score=0; let answered=0;
+      QUIZ.forEach((q,i)=>{ const v = document.querySelector(`input[name=q${i}]:checked`); if(v){answered++; if(Number(v.value)===q.key) score++; }});
+      el('#quizResult').textContent = `Score: ${score}/${QUIZ.length}`;
+      // update accuracy (rolling)
+      state.accuracy7 = Math.round((score/QUIZ.length)*100)+'%';
+      localStorage.setItem('apod_acc7', state.accuracy7);
+      completeLesson('QUIZ', 8);
+      renderHeader();
+    });
+    el('#resetQuiz').addEventListener('click',()=>{ els('input[type=radio]').forEach(r=>r.checked=false); el('#quizResult').textContent=''; });
+
+    // LANG SWITCH
+    el('#bnBtn').addEventListener('click',()=>{ state.lang='bn'; el('#bnBtn').classList.add('active'); el('#enBtn').classList.remove('active'); renderPOD(); });
+    el('#enBtn').addEventListener('click',()=>{ state.lang='en'; el('#enBtn').classList.add('active'); el('#bnBtn').classList.remove('active'); renderPOD(); });
+
+    // COMPLETE LESSON
+    window.completeLesson = function(id, minutes){
+      state.lessonsDone += 1; localStorage.setItem('apod_done', state.lessonsDone);
+      // streak update: naive daily check
+      const today = new Date().toDateString();
+      const last = localStorage.getItem('apod_last');
+      if(last !== today){ state.streak += 1; localStorage.setItem('apod_streak', state.streak); localStorage.setItem('apod_last', today); }
+      // minutes log (Sun..Sat with today index)
+      const d = new Date(); const idx = (d.getDay()+6)%7; // make Monday=0
+      state.weeklyMinutes[idx] = (state.weeklyMinutes[idx]||0) + (minutes||5);
+      localStorage.setItem('apod_minutes', JSON.stringify(state.weeklyMinutes));
+      renderHeader(); drawCharts();
+    }
+
+    // ---------- RENDER ----------
+    renderPOD(); renderLessons(); renderHeader();
+
+    // ---------- CHARTS ----------
+    let timeChart, radarChart;
+    function drawCharts(){
+      const ctx1 = document.getElementById('timeChart');
+      const ctx2 = document.getElementById('radarChart');
+      const labels = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+      const data = state.weeklyMinutes;
+
+      if(timeChart) timeChart.destroy();
+      timeChart = new Chart(ctx1, { type:'bar', data:{ labels, datasets:[{ label:'Minutes', data, borderWidth:1 }]}, options:{ responsive:true, scales:{ y:{ beginAtZero:true }}}});
+
+      if(radarChart) radarChart.destroy();
+      radarChart = new Chart(ctx2, { type:'radar', data:{ labels:['Reading','Writing','Grammar','Translation','Vocabulary'], datasets:[{ label:'Mastery', data:[70,65,60,55,75], borderWidth:2, pointRadius:3 }] }, options:{ responsive:true, scales:{ r:{ suggestedMin:0, suggestedMax:100 }}}});
+    }
+    drawCharts();
+  </script>
+</body>
+</html>
